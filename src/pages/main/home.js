@@ -13,20 +13,21 @@ export default function Home() {
         <main className="max-w-full flex flex-col w-full bg-white">
           {/* navbar */}
           <Navbar />
-          <div className="grid grid-cols-3 gap-4 p-4 mr-10 ms-10">
-            <div className="col-span-1 bg-teal-400 p-2">
+          <div className="w-full h-48 bg-sky-400 opacity-20 ..."></div>
+          <div className="-mt-8 grid grid-cols-3 gap-4 p-4 mr-10 ms-10">
+            <div className="col-span-1 bg-teal-400 p-2 md:block">
               <div className="text-xl flex flex-row justify-between">
                 <h1 className="font-bold">Filter</h1>
                 <h1 className="text-sky-500 font-bold">Reset</h1>
               </div>
               <div className="">
-                <button
+                {/* <button
                   id="dropdownBgHoverButton"
                   data-dropdown-toggle="dropdownBgHover"
                   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   type="button"
                 >
-                  Dropdown checkbox{" "}
+                  Dropdown checkbox
                   <svg
                     className="w-4 h-4 ml-2"
                     aria-hidden="true"
@@ -100,10 +101,10 @@ export default function Home() {
                       </div>
                     </li>
                   </ul>
-                </div>
+                </div> */}
               </div>
             </div>
-            <div className="col-span-2 bg-teal-400 p-2">
+            <div className="col-span-2 bg-teal-400 p-2  md:block">
               <div className="text-xl flex flex-row justify-between">
                 <div className="flex flex-row">
                   <h1 className="font-bold">Select Tiket</h1>

@@ -2,6 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import imgAuth from "../../images/logo-auth.png";
+import logoAnkasa from "../../images/logo-ankasa-auth.svg";
+
 
 export default function Register() {
   return (
@@ -23,7 +25,21 @@ export default function Register() {
           <div className="w-2/5" style={{ backgroundColor: "#FFFFFF" }}>
             <div className="flex flex-col items-center justify-center min-h-screen">
               <form>
-                <div className="flex justify-start text-3xl font-bold mb-2 text-left">
+                <div className="flex flex-col justify-start text-3xl font-bold mb-2 text-left">
+                  <div className="flex justify-start -mt-48">
+                    <a
+                      href="#!"
+                      className="mr-6 text-black-600 dark:text-black-200"
+                    >
+                      <Image
+                        className="w-auto"
+                        src={logoAnkasa}
+                        alt="logo-ankasa-auth"
+                      />
+                    </a>
+                  </div>
+                </div>
+                <div className="flex justify-start text-3xl font-bold mb-2 text-left -mt-20">
                   <h1 style={{ color: "black" }}>Register</h1>
                 </div>
                 <div className="flex flex-col mt-5">
@@ -62,12 +78,12 @@ export default function Register() {
                 </div>
                 <div className="flex justify-start mt-2 p-2">
                   <label style={{ color: "black" }}>
-                    <input type="checkbox" className="me-3" />
+                    <input type="checkbox" className="me-3 bg-white" />
                     Accept terms and condition
                   </label>
                 </div>
               </form>
-              <div className="flex flex-col mt-10 border-2 w-80" />
+              <div className="flex flex-col mt-10 border-2 w-64" />
               <div className="flex flex-col mt-10" style={{ color: "black" }}>
                 <h5>Already have an account?</h5>
               </div>

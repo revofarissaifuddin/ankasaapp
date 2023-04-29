@@ -1,4 +1,6 @@
 import logoNav from "../images/logo-inauth.png";
+import appleStore from "../images/apple-app-store.svg";
+import playStore from "../images/play-app.svg";
 import Image from "next/image";
 import { SlLocationPin } from "react-icons/sl";
 export default function Footer() {
@@ -11,7 +13,7 @@ export default function Footer() {
             <div className="">
               <h6 className="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
                 <Image
-                  className="hidden h-8 w-auto lg:block"
+                  className="hidden h-8 w-auto md:block"
                   src={logoNav}
                   alt="logo-inauth"
                 />
@@ -23,25 +25,25 @@ export default function Footer() {
             </div>
             {/* Features */}
             <div className="">
-              <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+              <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-center">
                 Features
               </h6>
-              <p className="mb-4">
+              <p className="mb-4 flex justify-center">
                 <a href="#!" className="text-black-600 dark:text-black-200">
                   Find Ticket
                 </a>
               </p>
-              <p className="mb-4">
+              <p className="mb-4 flex justify-center">
                 <a href="#!" className="text-black-600 dark:text-black-200">
                   My Booking
                 </a>
               </p>
-              <p className="mb-4">
+              <p className="mb-4 flex justify-center">
                 <a href="#!" className="text-black-600 dark:text-black-200">
                   Chat
                 </a>
               </p>
-              <p>
+              <p className="flex justify-center">
                 <a href="#!" className="text-black-600 dark:text-black-200">
                   Notification
                 </a>
@@ -49,35 +51,37 @@ export default function Footer() {
             </div>
             {/* DOWNLOAD ANGKASA APP */}
             <div className="">
-              <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+              <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-center">
                 Download Angkasa app
               </h6>
-              <p className="mb-4">
-                <a href="#!" className="text-black-600 dark:text-black-200">
-                  Pricing
+              {/* App Store */}
+              <div className="flex justify-center mb-4">
+                <a
+                  href="#!"
+                  className="mr-6 text-black-600 dark:text-black-200"
+                >
+                  <Image
+                    className="w-auto"
+                    src={appleStore}
+                    alt="apple-app-store"
+                  />
                 </a>
-              </p>
-              <p className="mb-4">
-                <a href="#!" className="text-black-600 dark:text-black-200">
-                  Settings
+              </div>
+              {/* Play Store */}
+              <div className="flex justify-center">
+                <a
+                  href="#!"
+                  className="mr-6 text-black-600 dark:text-black-200"
+                >
+                  <Image className="w-auto" src={playStore} alt="play-app" />
                 </a>
-              </p>
-              <p className="mb-4">
-                <a href="#!" className="text-black-600 dark:text-black-200">
-                  Orders
-                </a>
-              </p>
-              <p>
-                <a href="#!" className="text-black-600 dark:text-black-200">
-                  Help
-                </a>
-              </p>
+              </div>
             </div>
             <div className="">
               <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-center">
                 Follow Us
               </h6>
-              <div className="flex justify-end">
+              <div className="flex justify-center">
                 {/* facebook */}
                 <a
                   href="#!"
