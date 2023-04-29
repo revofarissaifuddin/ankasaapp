@@ -3,6 +3,7 @@ import Footer from "@/components/footer";
 import Head from "next/head";
 import Image from "next/image";
 import logoAnkasa from "../../images/logo-ankasa-section.svg";
+import LogoMaskapai from "../../images/garuda-indonesia-logo.svg"
 
 export default function DetailSelected() {
   return (
@@ -24,7 +25,7 @@ export default function DetailSelected() {
             alt="logo-ankasa-section"
           />
         </div>
-        <div className="-mt-40 grid grid-cols-3 gap-4 p-4 mr-10 ms-10">
+        <div className="-mt-40 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 mr-10 ms-10">
           {/* left menu */}
           <div className="col-span-2 p-2">
             <div className="text-xl flex flex-col justify-start">
@@ -33,7 +34,7 @@ export default function DetailSelected() {
               </div>
             </div>
             {/* contact person details */}
-            <div className="flex flex-col bg-white rounded-lg mt-5">
+            <div className="flex flex-col bg-white rounded-lg mt-10">
               <div className="flex flex-col p-10">
                 <form>
                   <div className="flex flex-col">
@@ -96,6 +97,27 @@ export default function DetailSelected() {
             <div className="flex flex-col bg-white rounded-lg mt-5">
               <div className="flex flex-col p-10">
                 <form>
+                  <div className="flex flex-col mt-5 ms-1 p-3 bg-cyan-100 rounded-lg">
+                    <div className="flex flex-row justify-between">
+                      <div className="ms-2">
+                        <h1>Passenger : 1 Adult</h1>
+                      </div>
+                      <div className="me-2">
+                        <label
+                          className="inline-block pl-[0.15rem] hover:cursor-pointer"
+                          for="flexSwitchCheckDefault"
+                        >
+                          Same as contact person
+                        </label>
+                        <input
+                          className="mr-2 mt-[0.3rem] h-3.5 ms-3 w-8 appearance-none rounded-[0.4375rem] bg-neutral-300 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-neutral-100 after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:bg-neutral-600 dark:after:bg-neutral-400 dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
+                          type="checkbox"
+                          role="switch"
+                          id="flexSwitchCheckDefault"
+                        />
+                      </div>
+                    </div>
+                  </div>
                   <div
                     className="flex flex-col mt-5 ms-1 border-b-2 border-500"
                     style={{ borderColor: "#D2C2FF" }}
@@ -201,12 +223,17 @@ export default function DetailSelected() {
               <h1 className="font-bold">Flight Details</h1>
               <h1 className="text-md">View Details</h1>
             </div>
-            <div className="flex flex-col bg-white rounded-lg mt-5">
+            <div className="flex flex-col bg-white rounded-lg mt-10">
               <div className="p-5">
                 {/* layout merek */}
                 <div className="flex flex-row">
                   <div className="flex-1 w-64">
-                    <h1 className="font-bold">Select Tiket</h1>
+                    <Image
+                      className="w-auto"
+                      src={LogoMaskapai}
+                      alt="garuda-indonesia-logo"
+                      style={{ width: "100", height: "57" }}
+                    />
                   </div>
                   <div className="flex-1 w-32">
                     <h1 className="">Garuda Indonesia</h1>

@@ -12,17 +12,20 @@ export default function ForgotPassword() {
         <title>Forgot Password</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex flex-col items-center justify-center w-full flex-1 text-center">
+      <main className="flex flex-col items-center justify-center w-full flex-1 text-center bg-white">
         <div className="rounded-2xl shadow-2xl flex w-full h-full">
           <div
-            className="w-3/5 justify-center"
+            className="w-3/5 justify-center hidden md:block"
             style={{ backgroundColor: "#2395FF" }}
           >
             <div className="flex flex-col items-center justify-center min-h-screen">
               <Image src={imgAuth} alt="" style={{ maxWidth: "50%" }} />
             </div>
           </div>
-          <div className="w-2/5" style={{ backgroundColor: "#FFFFFF" }}>
+          <div
+            className="w-2/5 mx-auto md:bg-white"
+            style={{ backgroundColor: "#FFFFFF" }}
+          >
             <div className="flex flex-col items-center justify-center min-h-screen">
               <form>
                 <div className="flex flex-col justify-start text-3xl font-bold mb-2 text-left">
