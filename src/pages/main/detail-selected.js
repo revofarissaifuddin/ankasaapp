@@ -3,7 +3,7 @@ import Footer from "@/components/footer";
 import Head from "next/head";
 import Image from "next/image";
 import logoAnkasa from "../../images/logo-ankasa-section.svg";
-import LogoMaskapai from "../../images/garuda-indonesia-logo.svg"
+import LogoMaskapai from "../../images/garuda-indonesia-logo.svg";
 
 export default function DetailSelected() {
   return (
@@ -29,7 +29,7 @@ export default function DetailSelected() {
           {/* left menu */}
           <div className="col-span-2 p-2">
             <div className="text-xl flex flex-col justify-start">
-              <div className="flex flex-row  text-white">
+              <div className="flex flex-row text-white">
                 <h1 className="font-bold">Contact Person Details</h1>
               </div>
             </div>
@@ -60,7 +60,6 @@ export default function DetailSelected() {
                     style={{ borderColor: "#D2C2FF" }}
                   >
                     <label
-                      for="countries"
                       className="block mb-2 ms-4 text-sm font-medium text-gray-900 bg-white"
                     >
                       Select an option
@@ -105,7 +104,6 @@ export default function DetailSelected() {
                       <div className="me-2">
                         <label
                           className="inline-block pl-[0.15rem] hover:cursor-pointer"
-                          for="flexSwitchCheckDefault"
                         >
                           Same as contact person
                         </label>
@@ -123,7 +121,6 @@ export default function DetailSelected() {
                     style={{ borderColor: "#D2C2FF" }}
                   >
                     <label
-                      for="countries"
                       className="block mb-2 ms-4 text-sm font-medium text-gray-900 bg-white"
                     >
                       Title
@@ -155,7 +152,6 @@ export default function DetailSelected() {
                     style={{ borderColor: "#D2C2FF" }}
                   >
                     <label
-                      for="countries"
                       className="block mb-2 ms-4 text-sm font-medium text-gray-900 bg-white"
                     >
                       Nationality
