@@ -4,6 +4,9 @@ import Head from "next/head";
 import Image from "next/image";
 import logoAnkasa from "../../images/logo-ankasa-section.svg";
 import LogoMaskapai from "../../images/garuda-indonesia-logo.svg";
+import LogoFlight from "../../images/logo-flight.svg";
+import LogoDot from "../../images/logo-dot.svg";
+import LogoCentang from "../../images/logo-centangbiru.svg";
 
 export default function DetailSelected() {
   return (
@@ -59,9 +62,7 @@ export default function DetailSelected() {
                     className="flex flex-col mt-5 mb-10 border-b-2 border-500"
                     style={{ borderColor: "#D2C2FF" }}
                   >
-                    <label
-                      className="block mb-2 ms-4 text-sm font-medium text-gray-900 bg-white"
-                    >
+                    <label className="block mb-2 ms-4 text-sm font-medium text-gray-900 bg-white">
                       Select an option
                     </label>
                     <div className="flex flex-row">
@@ -102,9 +103,7 @@ export default function DetailSelected() {
                         <h1>Passenger : 1 Adult</h1>
                       </div>
                       <div className="me-2">
-                        <label
-                          className="inline-block pl-[0.15rem] hover:cursor-pointer"
-                        >
+                        <label className="inline-block pl-[0.15rem] hover:cursor-pointer">
                           Same as contact person
                         </label>
                         <input
@@ -120,9 +119,7 @@ export default function DetailSelected() {
                     className="flex flex-col mt-5 ms-1 border-b-2 border-500"
                     style={{ borderColor: "#D2C2FF" }}
                   >
-                    <label
-                      className="block mb-2 ms-4 text-sm font-medium text-gray-900 bg-white"
-                    >
+                    <label className="block mb-2 ms-4 text-sm font-medium text-gray-900 bg-white">
                       Title
                     </label>
                     <div className="flex flex-row">
@@ -151,9 +148,7 @@ export default function DetailSelected() {
                     className="flex flex-col mt-5 border-b-2 border-500"
                     style={{ borderColor: "#D2C2FF" }}
                   >
-                    <label
-                      className="block mb-2 ms-4 text-sm font-medium text-gray-900 bg-white"
-                    >
+                    <label className="block mb-2 ms-4 text-sm font-medium text-gray-900 bg-white">
                       Nationality
                     </label>
                     <div className="flex flex-row ms-1">
@@ -220,7 +215,7 @@ export default function DetailSelected() {
               <h1 className="text-md">View Details</h1>
             </div>
             <div className="flex flex-col bg-white rounded-lg mt-10">
-              <div className="p-5">
+              <div className="p-10">
                 {/* layout merek */}
                 <div className="flex flex-row">
                   <div className="flex-1 w-64">
@@ -241,7 +236,11 @@ export default function DetailSelected() {
                     <h1 className="font-bold">Medan (IDN)</h1>
                   </div>
                   <div className="flex-none w-20">
-                    <h1 className="font-bold">\/</h1>
+                    <Image
+                      className="w-auto"
+                      src={LogoFlight}
+                      alt="logo-flight"
+                    />
                   </div>
                   <div className="flex-auto w-20">
                     <h1 className="font-bold">Tokyo (JPN)</h1>
@@ -252,20 +251,34 @@ export default function DetailSelected() {
                   <div className="flex-auto w-10">
                     <h1 className="">Sunday, 15 agustus 2020</h1>
                   </div>
-                  <div className="flex-none w-20">
-                    <h1 className="font-bold">o</h1>
+                  <div className="flex-none w-10">
+                    <Image
+                      className="w-auto mt-2.5"
+                      src={LogoDot}
+                      alt="logo-dot"
+                    />
                   </div>
                   <div className="flex-auto w-20">
                     <h1 className="">12:33-15:21</h1>
                   </div>
                 </div>
                 {/* layout detail tiket */}
-                <div className="flex flex-col mt-5">
-                  <div className="flex-auto w-40">
-                    <h1 className="text-blue">Refundable</h1>
+                <div className="flex flex-col mt-5 font-bold text-cyan-400">
+                  <div className="flex flex-row w-40">
+                    <Image
+                      className="w-auto"
+                      src={LogoCentang}
+                      alt="logo-centangbiru"
+                    />
+                    <h1 className="text-blue ms-3">Refundable</h1>
                   </div>
-                  <div className="flex-none w-40">
-                    <h1 className="text-blue">Can reschedule</h1>
+                  <div className="flex flex-row w-40">
+                    <Image
+                      className="w-auto"
+                      src={LogoCentang}
+                      alt="logo-centangbiru"
+                    />
+                    <h1 className="text-blue ms-3">Can reschedule</h1>
                   </div>
                 </div>
                 {/* layout merek */}
@@ -273,9 +286,9 @@ export default function DetailSelected() {
                   <div className="font-bold text-xl mt-2 text-black">
                     <h1>Flight Details</h1>
                   </div>
-                  <div className="flex flex-row">
-                    <h1 className="text-md mt-3 text-blue-500">$ 145,00</h1>
-                    <h1 className="text-md mt-3 ms-2 text-blue-500">V</h1>
+                  <div className="flex flex-row font-bold">
+                    <h1 className="text-md mt-3 text-cyan-400">$ 145,00</h1>
+                    <h1 className="text-md mt-3 ms-2 text-cyan-400">V</h1>
                   </div>
                 </div>
               </div>

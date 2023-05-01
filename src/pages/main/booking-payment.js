@@ -2,6 +2,10 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
+import LogoPaypal from "../../images/logo-paypal.svg";
+import LogoMastercard from "../../images/logo-mastercard-logo.svg";
+import LogoStripe from "../../images/logo-stripe.svg";
 
 export default function BookingPayment() {
   return (
@@ -26,17 +30,41 @@ export default function BookingPayment() {
                     <div className="">
                       <h1>Paypal</h1>
                     </div>
+                    <div className="">
+                      <Image
+                        className="w-auto"
+                        src={LogoPaypal}
+                        alt="logo-paypal"
+                      />
+                    </div>
                   </div>
                   <div className="flex flex-row justify-between mt-5">
                     <div className="">
                       <h1>Credit Card</h1>
+                    </div>
+                    <div className="flex flex-row">
+                      <Image
+                        className="w-auto"
+                        src={LogoPaypal}
+                        alt="logo-paypal"
+                      />
+                      <Image
+                        className="w-auto"
+                        src={LogoMastercard}
+                        alt="logo-mastercard"
+                      />
+                      <Image
+                        className="w-auto"
+                        src={LogoStripe}
+                        alt="logo-stripe"
+                      />
                     </div>
                   </div>
                   <div className="flex flex-col mt-5">
                     <label className="mb-1">Card Number</label>
                     <input
                       type="text"
-                      className="w-auto h-10 p-4 border border-slate-200"
+                      className="w-auto h-10 p-5 border-2 border-500 bg-white"
                       placeholder="Full Name"
                     />
                   </div>
@@ -45,16 +73,16 @@ export default function BookingPayment() {
                       <label className="mb-1">Expiry Date</label>
                       <input
                         type="text"
-                        className="w-auto h-10 p-4 border border-slate-200"
-                        placeholder="Full Name"
+                        className="w-auto h-10 p-5 border-2 border-500 bg-white"
+                        placeholder="MM/YY"
                       />
                     </div>
                     <div className="flex flex-col ms-2">
                       <label className="mb-1">CVC/CVV</label>
                       <input
                         type="text"
-                        className="w-auto h-10 p-4 border border-slate-200"
-                        placeholder="Full Name"
+                        className="w-auto h-10 p-5 border-2 border-500 bg-white"
+                        placeholder="000"
                       />
                     </div>
                   </div>

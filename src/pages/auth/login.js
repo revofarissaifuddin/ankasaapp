@@ -63,12 +63,14 @@ export default function Login() {
                   </label>
                 </div>
                 <div className="flex flex-col mt-5">
-                  <button
-                    className="rounded-lg w-auto xl:w-96 p-2 text-xl drop-shadow-xl"
-                    style={{ backgroundColor: "#2395FF", color: "white" }}
-                  >
-                    Sign In
-                  </button>
+                  <Link className="underline" href={"/main/home"}>
+                    <button
+                      className="rounded-lg w-auto xl:w-96 p-2 text-xl drop-shadow-xl"
+                      style={{ backgroundColor: "#2395FF", color: "white" }}
+                    >
+                      Sign In
+                    </button>
+                  </Link>
                 </div>
               </form>
               <div className="flex flex-col mt-10">

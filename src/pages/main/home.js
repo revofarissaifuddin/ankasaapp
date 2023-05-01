@@ -11,9 +11,24 @@ import LogoKoper from "../../images/logo-koper.svg";
 import LogoFood from "../../images/logo-food.svg";
 import LogoWifi from "../../images/logo-wifi.svg";
 import LogoFrom from "../../images/logo-from.svg";
-import BtnBack from "../../images/btnback.svg";
-
+import * as React from "react";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
+function valuetext(value) {
+  return `${value}°C`;
+}
 export default function Home() {
+  const [value, setValue] = React.useState([20, 37]);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <div className="mx-auto  h-screen bg-white">
       <div className="flex flex-col h-screen">
@@ -27,7 +42,6 @@ export default function Home() {
         >
           {/* navbar */}
           <Navbar />
-          {/*  */}
           <div
             className="w-full h-48 rounded-br-3xl rounded-bl-3xl"
             style={{ backgroundColor: "#2395FF" }}
@@ -78,122 +92,325 @@ export default function Home() {
                 <h1 className="font-bold">Filter</h1>
                 <h1 className="text-sky-500 font-bold">Reset</h1>
               </div>
-              <div className="flex flex-col bg-white border-stone-500 rounded-lg mt-5 ">
-                {/* Transit */}
-                <div className="flex flex-col">
-                  <div className="flex flex-row">
-                    <button className="rounded-lg w-auto xl:w-96 p-2 text-xl drop-shadow-xl text-start peer">
-                      Filter
-                    </button>
-                    <Image className="w-auto" src={BtnBack} alt="btnback" />
-                  </div>
-                  <fieldset className="">
-                    <legend class="sr-only">Checkbox variants</legend>
-                    <div class="flex items-center mb-4">
-                      <input
-                        id="checkbox-2"
-                        type="checkbox"
-                        value=""
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                      />
-                      <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                        I want to get promotional offers
-                      </label>
-                    </div>
-
-                    <div class="flex items-center mb-4">
-                      <input
-                        id="checkbox-3"
-                        type="checkbox"
-                        value=""
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                      />
-                      <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                        I am 18 years or older
-                      </label>
-                    </div>
-                  </fieldset>
-                </div>
-                {/* filter */}
-                <div className="">
-                  <div
-                    id="accordion-flush"
-                    data-accordion="collapse"
-                    data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                    data-inactive-classes="text-gray-500 dark:text-gray-400"
-                  >
-                    <h2 id="accordion-flush-heading-3">
-                      <button
-                        type="button"
-                        className="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
-                        data-accordion-target="#accordion-flush-body-3"
-                        aria-expanded="false"
-                        aria-controls="accordion-flush-body-3"
-                      >
-                        <span>
-                          What are the differences between Flowbite and Tailwind
-                          UI?
-                        </span>
-                        <svg
-                          data-accordion-icon
-                          className="w-6 h-6 shrink-0"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg>
-                      </button>
-                    </h2>
-                    <div
-                      id="accordion-flush-body-3"
-                      className="hidden"
-                      aria-labelledby="accordion-flush-heading-3"
+              <div className="flex flex-col bg-white border-stone-500 rounded-lg mt-5 p-5">
+                {/*  */}
+                <div>
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
                     >
-                      <div className="py-5 border-b border-gray-200 dark:border-gray-700">
-                        <p className="mb-2 text-gray-500 dark:text-gray-400">
-                          The main difference is that the core components from
-                          Flowbite are open source under the MIT license,
-                          whereas Tailwind UI is a paid product. Another
-                          difference is that Flowbite relies on smaller and
-                          standalone components, whereas Tailwind UI offers
-                          sections of pages.
-                        </p>
-                        <p className="mb-2 text-gray-500 dark:text-gray-400">
-                          However, we actually recommend using both Flowbite,
-                          Flowbite Pro, and even Tailwind UI as there is no
-                          technical reason stopping you from using the best of
-                          two worlds.
-                        </p>
-                        <p className="mb-2 text-gray-500 dark:text-gray-400">
-                          Learn more about these technologies:
-                        </p>
-                        <ul className="pl-5 text-gray-500 list-disc dark:text-gray-400">
-                          <li>
-                            <a
-                              href="https://flowbite.com/pro/"
-                              className="text-blue-600 dark:text-blue-500 hover:underline"
-                            >
-                              Flowbite Pro
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="https://tailwindui.com/"
-                              rel="nofollow"
-                              className="text-blue-600 dark:text-blue-500 hover:underline"
-                            >
-                              Tailwind UI
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                      <Typography className="font-bold">Transit</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography>
+                        <fieldset className="">
+                          <legend className="sr-only">Checkbox variants</legend>
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              Direct
+                            </label>
+                            <input
+                              id="checkbox-1"
+                              type="checkbox"
+                              defaultValue="Direct"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              Transit
+                            </label>
+                            <input
+                              id="checkbox-2"
+                              type="checkbox"
+                              defaultValue="Transit"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              Transit 2+
+                            </label>
+                            <input
+                              id="checkbox-2"
+                              type="checkbox"
+                              defaultValue="Transit 2+"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+                        </fieldset>
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel2a-content"
+                      id="panel2a-header"
+                    >
+                      <Typography className="font-bold">Facilities</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography>
+                        <fieldset className="">
+                          <legend className="sr-only">Checkbox variants</legend>
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              Luggage
+                            </label>
+                            <input
+                              id="checkbox-1"
+                              type="checkbox"
+                              defaultValue="Luggage"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              In-Flight Meal
+                            </label>
+                            <input
+                              id="checkbox-2"
+                              type="checkbox"
+                              defaultValue="In-Flight Meal"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              Wi-fi
+                            </label>
+                            <input
+                              id="checkbox-2"
+                              type="checkbox"
+                              defaultValue="Wi-fi"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+                        </fieldset>
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel3a-content"
+                      id="panel3a-header"
+                    >
+                      <Typography className="font-bold">
+                        Departure Time
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography className="font-bold">
+                        <fieldset className="">
+                          <legend className="sr-only">Checkbox variants</legend>
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              00:00 - 06:00
+                            </label>
+                            <input
+                              id="checkbox-2"
+                              type="checkbox"
+                              defaultValue="00:00 - 06:00"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              06:00 - 12:00
+                            </label>
+                            <input
+                              id="checkbox-2"
+                              type="checkbox"
+                              defaultValue="06:00 - 12:00"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              12:00 - 18:00
+                            </label>
+                            <input
+                              id="checkbox-2"
+                              type="checkbox"
+                              defaultValue="12:00 - 18:00"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              18:00 - 24:00
+                            </label>
+                            <input
+                              id="checkbox-2"
+                              type="checkbox"
+                              defaultValue="18:00 - 24:00"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+                        </fieldset>
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel4a-content"
+                      id="panel4a-header"
+                    >
+                      <Typography className="font-bold">
+                        Time Arrived
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography className="font-bold">
+                        <fieldset className="">
+                          <legend className="sr-only">Checkbox variants</legend>
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              00:00 - 06:00
+                            </label>
+                            <input
+                              id="checkbox-1"
+                              type="checkbox"
+                              defaultValue="00:00 - 06:00"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              06:00 - 12:00
+                            </label>
+                            <input
+                              id="checkbox-2"
+                              type="checkbox"
+                              defaultValue="06:00 - 12:00"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              12:00 - 18:00
+                            </label>
+                            <input
+                              id="checkbox-2"
+                              type="checkbox"
+                              defaultValue="12:00 - 18:00"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              18:00 - 24:00
+                            </label>
+                            <input
+                              id="checkbox-2"
+                              type="checkbox"
+                              defaultValue="18:00 - 24:00"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+                        </fieldset>
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel5a-content"
+                      id="panel5a-header"
+                    >
+                      <Typography className="font-bold">Airlines</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography className="font-bold">
+                        <fieldset className="">
+                          <legend className="sr-only">Checkbox variants</legend>
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              Garuda Indonesia
+                            </label>
+                            <input
+                              id="checkbox-1"
+                              type="checkbox"
+                              defaultValue="Garuda Indonesia"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              Air Asia
+                            </label>
+                            <input
+                              id="checkbox-2"
+                              type="checkbox"
+                              defaultValue="Air Asia"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                              Lion Air
+                            </label>
+                            <input
+                              id="checkbox-2"
+                              type="checkbox"
+                              defaultValue="Lion Air"
+                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                          </div>
+                        </fieldset>
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel6a-content"
+                      id="panel6a-header"
+                    >
+                      <Typography className="font-bold">
+                        Ticket Price
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography className="font-bold">
+                        <div className="flex flex-col">
+                          <div className="text-sm flex flex-row justify-between text-gray-500 ">
+                            <h1 className="font-bold">Lowest</h1>
+                            <h1 className="font-bold">Highest</h1>
+                          </div>
+                          <div className="">
+                            <Box sx={{ width: 300 }}>
+                              <Slider
+                                getAriaLabel={() => "Temperature range"}
+                                value={value}
+                                onChange={handleChange}
+                                valueLabelDisplay="auto"
+                                getAriaValueText={valuetext}
+                              />
+                            </Box>
+                          </div>
+                          <div className="text-sm flex flex-row justify-between text-sky-500 ">
+                            <h1 className="font-bold">$ 145,00</h1>
+                            <h1 className="font-bold">$ 300,00</h1>
+                          </div>
+                        </div>
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
                 </div>
               </div>
             </div>
@@ -310,10 +527,10 @@ export default function Home() {
                         id="countries"
                         className="bg-white-50 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-40 bg-white p-2.5 text-blue-400 font-bold"
                       >
-                        <option selected value="">
+                        <option selected defaultValue="">
                           View Details
                         </option>
-                        <option value=""> View Details 2</option>
+                        <option defaultValue=""> View Details 2</option>
                       </select>
                     </div>
                   </div>
@@ -416,10 +633,10 @@ export default function Home() {
                         id="countries"
                         className="bg-white-50 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-40 bg-white p-2.5 text-blue-400 font-bold"
                       >
-                        <option selected value="">
+                        <option selected defaultValue="">
                           View Details
                         </option>
-                        <option value=""> View Details 2</option>
+                        <option defaultValue=""> View Details 2</option>
                       </select>
                     </div>
                   </div>
