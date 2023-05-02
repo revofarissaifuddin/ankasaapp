@@ -137,7 +137,8 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-        {/* notif, message and profile */}
+        {/*============================= notif, message and profile =================================*/}
+        {/* search */}
         <div className="flex md:order-2">
           <button
             type="button"
@@ -151,8 +152,9 @@ export default function Navbar() {
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt=""
             />
-            <span className="sr-only">Search</span>
+            <span className="sr-only">Profile</span>
           </button>
+          {/* icon notif, message, profile */}
           <div className="relative hidden md:block">
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               <button
@@ -215,6 +217,7 @@ export default function Navbar() {
               </div>
             </div>
           </div>
+          {/* icon mobile button */}
           <button
             data-collapse-toggle="navbar-search"
             type="button"
@@ -237,6 +240,74 @@ export default function Navbar() {
               ></path>
             </svg>
           </button>
+        </div>
+      </div>
+      {/* mobile */}
+      <div className="sm:hidden" id="mobile-menu">
+        <div className="space-y-1 px-2 pb-3 pt-2">
+          <div className="relative mt-3 md:hidden">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg
+                className="w-5 h-5 text-gray-500"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+            </div>
+            <input
+              type="text"
+              id="search-navbar"
+              className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Where you want to go?"
+            />
+          </div>
+          <div className="">
+            <a
+              href="#"
+              className="block py-2 pl-3 pr-4 text-black text-xl rounded md:bg-transparent md:p-0 "
+              aria-current="page"
+            >
+              Find Ticket
+            </a>
+          </div>
+
+          <div className="">
+            <a
+              href="#"
+              className="block py-2 pl-3 pr-4 text-gray-900 text-xl rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >
+              My Booking
+            </a>
+          </div>
+          <div className="ms-2">
+            <button
+              type="button"
+              className="rounded-full p-1 mr-5 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+            >
+              <span className="sr-only">View notifications</span>
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m3.84674576 17.8602756c.19747034.0956834.41909523.1493366.65325152.1493366h15.00000272c.234157 0 .4557825-.0536535.6532533-.1493375l-5.9086286-5.5610622-1.9267711 1.5867526c-.1846279.1520465-.4510793.1520465-.6357072 0l-1.92677107-1.5867526zm-.70365326-.7104533c.0046301-.0047126.00937185-.0093545.01422515-.0139223l5.81988317-5.4775371-5.79505445-4.77239778c-.01263654-.01040657-.02463114-.0213036-.03597893-.03264079-.09369981.19580951-.14617016.41511504-.14617016.64667567v9.0096122c0 .2290153.05132317.4460434.14309522.6402101zm17.7138132-.0000019c.0917715-.1941662.1430943-.4111936.1430943-.6402082v-9.0096122c0-.23155991-.05247-.45086478-.1461693-.64667383-.0113472.01133652-.0233412.02223294-.0359771.03263895l-5.7950544 4.77239778 5.8198831 5.4775371c.0048527.0045672.0095939.0092085.0142234.0139204zm-.7124776-11.00472344c-.1952395-.09302717-.413753-.14509696-.6444281-.14509696h-15.00000272c-.23067439 0-.44918731.05206949-.64442642.14509614l8.14442914 6.70717696zm-15.64443082-1.14509696h15.00000272c1.3807119 0 2.5 1.11928813 2.5 2.5v9.0096122c0 1.3807119-1.1192881 2.5-2.5 2.5h-15.00000272c-1.38071187 0-2.5-1.1192881-2.5-2.5v-9.0096122c0-1.38071187 1.11928813-2.5 2.5-2.5z"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </nav>

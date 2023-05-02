@@ -6,6 +6,7 @@ import Image from "next/image";
 import LogoPaypal from "../../images/logo-paypal.svg";
 import LogoMastercard from "../../images/logo-mastercard-logo.svg";
 import LogoStripe from "../../images/logo-stripe.svg";
+import LogoVisa from "../../images/logo-visa.svg";
 
 export default function BookingPayment() {
   return (
@@ -45,18 +46,18 @@ export default function BookingPayment() {
                     <div className="flex flex-row">
                       <Image
                         className="w-auto"
-                        src={LogoPaypal}
-                        alt="logo-paypal"
-                      />
-                      <Image
-                        className="w-auto"
-                        src={LogoMastercard}
-                        alt="logo-mastercard"
+                        src={LogoVisa}
+                        alt="logo-visa"
                       />
                       <Image
                         className="w-auto"
                         src={LogoStripe}
                         alt="logo-stripe"
+                      />
+                      <Image
+                        className="w-auto"
+                        src={LogoMastercard}
+                        alt="logo-mastercard"
                       />
                     </div>
                   </div>

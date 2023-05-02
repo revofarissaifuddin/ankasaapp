@@ -1,38 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# WEB APP Ankasa
+Ankasa app merupakan aplikasi berbasis web yang menampilkan 
 
-## Getting Started
-
-First, run the development server:
-
+## Build Packages NodeJS
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+    "@emotion/react": "^11.10.8",
+    "@emotion/styled": "^11.10.8",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.12.2",
+    "autoprefixer": "10.4.14",
+    "eslint": "8.39.0",
+    "eslint-config-next": "13.3.1",
+    "next": "13.3.1",
+    "postcss": "8.4.23",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.8.0",
+    "tailwindcss": "3.3.1"
 ```
+## Link Backend
+- [Visit App](https://github.com/revofarissaifuddin/ankasaBE)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Link APP
+- [Visit App]()
+## Tampilan UI App
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+<!-- https://drive.google.com/uc?export=view&id= -->
+| Login Page | Register Page |
+| ------------ | ------------- |
+| <img src="https://drive.google.com/uc?export=view&id=1vb62dpHkxwur66Xr-aZz9-hwpzLvj1WQ" width="450"> | <img src="https://drive.google.com/uc?export=view&id=1vfRhUFlYNJLhjFmmN9BmSCRi3DXygFDG" width="450">|
+| Forgot Page | VerifOtp Page |
+|||
+| <img src="https://drive.google.com/uc?export=view&id=1YypA7334IvkZREGUDnLFuQtd_qhUPY-i" width="450"> | <img src="https://drive.google.com/uc?export=view&id=1ebfZppUaprJgu-FqHVWEeNGRsWpyIK35" width="450">|
+| Landing Page | Home Page |
+|||
+| <img src="https://drive.google.com/uc?export=view&id=1Z3QC_000ZDuvJnMAI38IDnoTZW_UcLPg" width="450">|<img src="https://drive.google.com/uc?export=view&id=1Sr4qpapFgwAzSyydXsnPHP2uzSbbCsU6" width="450"> |
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

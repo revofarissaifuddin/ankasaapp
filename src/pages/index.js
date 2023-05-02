@@ -1,8 +1,8 @@
 import Head from "next/head";
 import NavbarLanding from "@/components/navbarLanding";
 import Footer from "@/components/footer";
-
-
+import Link from "next/link";
+import Image from "next/image";
 export default function Home() {
   return (
     <div className="mx-auto  h-screen bg-white">
@@ -17,7 +17,13 @@ export default function Home() {
         >
           {/* navbar */}
           <NavbarLanding />
-
+          {/* boddy */}
+          <div
+            className="w-full mx-auto"
+            style={{ backgroundColor: "#2395FF" }}
+          >
+            asdasdjnasjdn
+          </div>
           {/* footer */}
           <div className="w-full bg-white">
             <Footer />
