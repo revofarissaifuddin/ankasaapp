@@ -20,10 +20,10 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 function valuetext(value) {
-  return `${value}°C`;
+  return `${value}`;
 }
 export default function Home() {
-  const [value, setValue] = React.useState([20, 37]);
+  const [value, setValue] = React.useState([0,300]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -104,46 +104,44 @@ export default function Home() {
                       <Typography className="font-bold">Transit</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography>
-                        <fieldset className="">
-                          <legend className="sr-only">Checkbox variants</legend>
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              Direct
-                            </label>
-                            <input
-                              id="checkbox-1"
-                              type="checkbox"
-                              defaultValue="Direct"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
+                      <fieldset className="">
+                        <legend className="sr-only">Checkbox variants</legend>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            Direct
+                          </label>
+                          <input
+                            id="checkbox-1"
+                            type="checkbox"
+                            defaultValue="Direct"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
 
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              Transit
-                            </label>
-                            <input
-                              id="checkbox-2"
-                              type="checkbox"
-                              defaultValue="Transit"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            Transit
+                          </label>
+                          <input
+                            id="checkbox-2"
+                            type="checkbox"
+                            defaultValue="Transit"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
 
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              Transit 2+
-                            </label>
-                            <input
-                              id="checkbox-2"
-                              type="checkbox"
-                              defaultValue="Transit 2+"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
-                        </fieldset>
-                      </Typography>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            Transit 2+
+                          </label>
+                          <input
+                            id="checkbox-2"
+                            type="checkbox"
+                            defaultValue="Transit 2+"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
+                      </fieldset>
                     </AccordionDetails>
                   </Accordion>
                   <Accordion>
@@ -155,46 +153,44 @@ export default function Home() {
                       <Typography className="font-bold">Facilities</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography>
-                        <fieldset className="">
-                          <legend className="sr-only">Checkbox variants</legend>
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              Luggage
-                            </label>
-                            <input
-                              id="checkbox-1"
-                              type="checkbox"
-                              defaultValue="Luggage"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
+                      <fieldset className="">
+                        <legend className="sr-only">Checkbox variants</legend>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            Luggage
+                          </label>
+                          <input
+                            id="checkbox-1"
+                            type="checkbox"
+                            defaultValue="Luggage"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
 
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              In-Flight Meal
-                            </label>
-                            <input
-                              id="checkbox-2"
-                              type="checkbox"
-                              defaultValue="In-Flight Meal"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            In-Flight Meal
+                          </label>
+                          <input
+                            id="checkbox-2"
+                            type="checkbox"
+                            defaultValue="In-Flight Meal"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
 
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              Wi-fi
-                            </label>
-                            <input
-                              id="checkbox-2"
-                              type="checkbox"
-                              defaultValue="Wi-fi"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
-                        </fieldset>
-                      </Typography>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            Wi-fi
+                          </label>
+                          <input
+                            id="checkbox-2"
+                            type="checkbox"
+                            defaultValue="Wi-fi"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
+                      </fieldset>
                     </AccordionDetails>
                   </Accordion>
                   <Accordion>
@@ -208,56 +204,54 @@ export default function Home() {
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography className="font-bold">
-                        <fieldset className="">
-                          <legend className="sr-only">Checkbox variants</legend>
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              00:00 - 06:00
-                            </label>
-                            <input
-                              id="checkbox-2"
-                              type="checkbox"
-                              defaultValue="00:00 - 06:00"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
+                      <fieldset className="">
+                        <legend className="sr-only">Checkbox variants</legend>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            00:00 - 06:00
+                          </label>
+                          <input
+                            id="checkbox-2"
+                            type="checkbox"
+                            defaultValue="00:00 - 06:00"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
 
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              06:00 - 12:00
-                            </label>
-                            <input
-                              id="checkbox-2"
-                              type="checkbox"
-                              defaultValue="06:00 - 12:00"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              12:00 - 18:00
-                            </label>
-                            <input
-                              id="checkbox-2"
-                              type="checkbox"
-                              defaultValue="12:00 - 18:00"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              18:00 - 24:00
-                            </label>
-                            <input
-                              id="checkbox-2"
-                              type="checkbox"
-                              defaultValue="18:00 - 24:00"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
-                        </fieldset>
-                      </Typography>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            06:00 - 12:00
+                          </label>
+                          <input
+                            id="checkbox-2"
+                            type="checkbox"
+                            defaultValue="06:00 - 12:00"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            12:00 - 18:00
+                          </label>
+                          <input
+                            id="checkbox-2"
+                            type="checkbox"
+                            defaultValue="12:00 - 18:00"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            18:00 - 24:00
+                          </label>
+                          <input
+                            id="checkbox-2"
+                            type="checkbox"
+                            defaultValue="18:00 - 24:00"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
+                      </fieldset>
                     </AccordionDetails>
                   </Accordion>
                   <Accordion>
@@ -271,57 +265,55 @@ export default function Home() {
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography className="font-bold">
-                        <fieldset className="">
-                          <legend className="sr-only">Checkbox variants</legend>
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              00:00 - 06:00
-                            </label>
-                            <input
-                              id="checkbox-1"
-                              type="checkbox"
-                              defaultValue="00:00 - 06:00"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
+                      <fieldset className="">
+                        <legend className="sr-only">Checkbox variants</legend>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            00:00 - 06:00
+                          </label>
+                          <input
+                            id="checkbox-1"
+                            type="checkbox"
+                            defaultValue="00:00 - 06:00"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
 
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              06:00 - 12:00
-                            </label>
-                            <input
-                              id="checkbox-2"
-                              type="checkbox"
-                              defaultValue="06:00 - 12:00"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            06:00 - 12:00
+                          </label>
+                          <input
+                            id="checkbox-2"
+                            type="checkbox"
+                            defaultValue="06:00 - 12:00"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
 
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              12:00 - 18:00
-                            </label>
-                            <input
-                              id="checkbox-2"
-                              type="checkbox"
-                              defaultValue="12:00 - 18:00"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              18:00 - 24:00
-                            </label>
-                            <input
-                              id="checkbox-2"
-                              type="checkbox"
-                              defaultValue="18:00 - 24:00"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
-                        </fieldset>
-                      </Typography>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            12:00 - 18:00
+                          </label>
+                          <input
+                            id="checkbox-2"
+                            type="checkbox"
+                            defaultValue="12:00 - 18:00"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            18:00 - 24:00
+                          </label>
+                          <input
+                            id="checkbox-2"
+                            type="checkbox"
+                            defaultValue="18:00 - 24:00"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
+                      </fieldset>
                     </AccordionDetails>
                   </Accordion>
                   <Accordion>
@@ -333,46 +325,44 @@ export default function Home() {
                       <Typography className="font-bold">Airlines</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography className="font-bold">
-                        <fieldset className="">
-                          <legend className="sr-only">Checkbox variants</legend>
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              Garuda Indonesia
-                            </label>
-                            <input
-                              id="checkbox-1"
-                              type="checkbox"
-                              defaultValue="Garuda Indonesia"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
+                      <fieldset className="">
+                        <legend className="sr-only">Checkbox variants</legend>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            Garuda Indonesia
+                          </label>
+                          <input
+                            id="checkbox-1"
+                            type="checkbox"
+                            defaultValue="Garuda Indonesia"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
 
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              Air Asia
-                            </label>
-                            <input
-                              id="checkbox-2"
-                              type="checkbox"
-                              defaultValue="Air Asia"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            Air Asia
+                          </label>
+                          <input
+                            id="checkbox-2"
+                            type="checkbox"
+                            defaultValue="Air Asia"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
 
-                          <div className="flex justify-between items-center mb-4">
-                            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                              Lion Air
-                            </label>
-                            <input
-                              id="checkbox-2"
-                              type="checkbox"
-                              defaultValue="Lion Air"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            />
-                          </div>
-                        </fieldset>
-                      </Typography>
+                        <div className="flex justify-between items-center mb-4">
+                          <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            Lion Air
+                          </label>
+                          <input
+                            id="checkbox-2"
+                            type="checkbox"
+                            defaultValue="Lion Air"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                        </div>
+                      </fieldset>
                     </AccordionDetails>
                   </Accordion>
                   <Accordion>
@@ -386,29 +376,27 @@ export default function Home() {
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography className="font-bold">
-                        <div className="flex flex-col">
-                          <div className="text-sm flex flex-row justify-between text-gray-500 ">
-                            <h1 className="font-bold">Lowest</h1>
-                            <h1 className="font-bold">Highest</h1>
-                          </div>
-                          <div className="">
-                            <Box sx={{ width: 300 }}>
-                              <Slider
-                                getAriaLabel={() => "Temperature range"}
-                                value={value}
-                                onChange={handleChange}
-                                valueLabelDisplay="auto"
-                                getAriaValueText={valuetext}
-                              />
-                            </Box>
-                          </div>
-                          <div className="text-sm flex flex-row justify-between text-sky-500 ">
-                            <h1 className="font-bold">$ 145,00</h1>
-                            <h1 className="font-bold">$ 300,00</h1>
-                          </div>
+                      <div className="flex flex-col">
+                        <div className="text-sm flex flex-row justify-between text-gray-500 ">
+                          <h1 className="font-bold">Lowest</h1>
+                          <h1 className="font-bold">Highest</h1>
                         </div>
-                      </Typography>
+                        <div className="">
+                          <Box>
+                            <Slider
+                              getAriaLabel={() => "range"}
+                              value={value}
+                              onChange={handleChange}
+                              valueLabelDisplay="auto"
+                              getAriaValueText={valuetext}
+                            />
+                          </Box>
+                        </div>
+                        <div className="text-sm flex flex-row justify-between text-sky-500 ">
+                          <h1 className="font-bold">$ {value}</h1>
+                          <h1 className="font-bold">$ {value}</h1>
+                        </div>
+                      </div>
                     </AccordionDetails>
                   </Accordion>
                 </div>
