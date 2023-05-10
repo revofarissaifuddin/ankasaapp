@@ -2,13 +2,14 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import logoAnkasa from "../../images/logo-ankasa-section.svg";
 import LogoMaskapai from "../../images/garuda-indonesia-logo.svg";
 import LogoFlight from "../../images/logo-flight.svg";
 import LogoDot from "../../images/logo-dot.svg";
 import LogoCentang from "../../images/logo-centangbiru.svg";
 
-export default function DetailSelected() {
+export default function BookingSelected() {
   return (
     <div className="mx-auto">
       <Head>
@@ -37,7 +38,7 @@ export default function DetailSelected() {
               </div>
             </div>
             {/* contact person details */}
-            <div className="flex flex-col bg-white rounded-lg mt-10">
+            <div className="flex flex-col bg-white rounded-lg shadow-md mt-10">
               <div className="flex flex-col p-10">
                 <form>
                   <div className="flex flex-col">
@@ -94,7 +95,7 @@ export default function DetailSelected() {
                 <h1 className="font-bold">Passenger Details</h1>
               </div>
             </div>
-            <div className="flex flex-col bg-white rounded-lg mt-5">
+            <div className="flex flex-col bg-white rounded-lg shadow-md mt-5">
               <div className="flex flex-col p-10">
                 <form>
                   <div className="flex flex-col mt-5 ms-1 p-3 bg-cyan-100 rounded-lg">
@@ -173,7 +174,7 @@ export default function DetailSelected() {
                 <h1 className="font-bold">Passenger Details</h1>
               </div>
             </div>
-            <div className="flex flex-col bg-white rounded-lg mt-5">
+            <div className="flex flex-col bg-white rounded-lg shadow-md mt-5">
               <div className="flex flex-col p-10">
                 <form>
                   <div className="flex flex-row justify-between w-auto h-10 border-b-2 border-500 ">
@@ -199,12 +200,14 @@ export default function DetailSelected() {
             {/* Button Payment */}
             <div className="text-xl flex flex-col justify-center mt-10">
               <div className="flex flex-row justify-center text-black">
-                <button
-                  className="rounded-lg w-auto xl:w-96 p-2 text-xl drop-shadow-xl"
-                  style={{ backgroundColor: "#2395FF", color: "white" }}
-                >
-                  Proceed to Payment
-                </button>
+                <Link href={"/payment/booking-payment"}>
+                  <button
+                    className="rounded-lg shadow-md w-auto xl:w-96 p-2 text-xl drop-shadow-xl"
+                    style={{ backgroundColor: "#2395FF", color: "white" }}
+                  >
+                    Proceed to Payment
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -214,7 +217,7 @@ export default function DetailSelected() {
               <h1 className="font-bold">Flight Details</h1>
               <h1 className="text-md">View Details</h1>
             </div>
-            <div className="flex flex-col bg-white rounded-lg mt-10">
+            <div className="flex flex-col bg-white rounded-lg shadow-md mt-10">
               <div className="p-10">
                 {/* layout merek */}
                 <div className="flex flex-row">

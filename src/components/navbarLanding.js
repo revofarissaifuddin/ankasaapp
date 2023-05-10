@@ -5,19 +5,23 @@ import Link from "next/link";
 export default function NavbarLanding() {
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
-      <div className="max-w-full flex flex-wrap items-center justify-between mx-auto p-4 mr-10 ms-10">
+      <div className="container mx-auto  flex flex-wrap items-center justify-between mx-auto p-4">
         {/* img logo navbar */}
         <div className="flex flex-shrink-0 items-center">
-          <Image
-            className="block h-8 w-auto lg:hidden"
-            src={logoNav}
-            alt="logo-inauth"
-          />
-          <Image
-            className="hidden h-8 w-auto lg:block"
-            src={logoNav}
-            alt="logo-inauth"
-          />
+          <Link href={"/"}>
+            <div className="flex flex-shrink-0 items-center">
+              <Image
+                className="block h-8 w-auto lg:hidden"
+                src={logoNav}
+                alt="logo-inauth"
+              />
+              <Image
+                className="hidden h-8 w-auto lg:block"
+                src={logoNav}
+                alt="logo-inauth"
+              />
+            </div>
+          </Link>
         </div>
         {/* search and button menu */}
         <div
@@ -122,8 +126,8 @@ export default function NavbarLanding() {
             </li>
             <li>
               <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-white text-xl bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 border-b-4 border-indigo-500 "
+                href={"/main/home"}
+                className="block py-2 pl-3 pr-4 text-gray-900 text-xl rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 aria-current="page"
               >
                 Find Ticket
@@ -178,7 +182,7 @@ export default function NavbarLanding() {
           </div>
           <div className="">
             <a
-              href="#"
+              href={"/main/home"}
               className="block py-2 pl-3 pr-4 text-black text-xl rounded md:bg-transparent md:p-0 "
               aria-current="page"
             >
@@ -194,7 +198,6 @@ export default function NavbarLanding() {
               My Booking
             </a>
           </div>
-          
         </div>
       </div>
     </nav>

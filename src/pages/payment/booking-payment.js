@@ -19,7 +19,7 @@ export default function BookingPayment() {
         {/* navbar */}
         <Navbar />
         <div className="w-full mx-auto" style={{ backgroundColor: "#2395FF" }}>
-          <div className="container mx-auto bg-white mt-20 mb-20 ">
+          <div className="container mx-auto bg-white shadow-2xl mt-20 mb-20 ">
             <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 p-20">
               {/* left menu */}
               <div className="col-span-1">
@@ -139,9 +139,14 @@ export default function BookingPayment() {
                     </div>
                   </div>
                   <div className="flex flex-col mt-5">
-                    <button className="rounded-lg w-auto p-2 text-xl drop-shadow-xl bg-blue-500 text-white text-sm">
-                      Try it free for 30 Days
-                    </button>
+                    <Link
+                      href={"/profile/my-booking"}
+                      className="flex flex-col mt-5"
+                    >
+                      <button className="rounded-lg shadow-lg w-auto p-2 text-xl drop-shadow-xl bg-blue-500 text-white text-sm">
+                        Try it free for 30 Days
+                      </button>
+                    </Link>
                   </div>
                   <div className="flex justify-center">
                     <Link className="underline text-blue-400 " href={""}>

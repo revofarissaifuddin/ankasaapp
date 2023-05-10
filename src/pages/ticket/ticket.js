@@ -4,8 +4,16 @@ import Head from "next/head";
 import Image from "next/image";
 import LogoMaskapai from "../../images/garuda-indonesia-logo.svg";
 import LogoFlight from "../../images/logo-flight.svg";
+import Barcode from "react-barcode";
+import React, { useState } from "react";
+import styles from "../../css/App.module.css";
 
-export default function BookingTiket() {
+export default function Tiket() {
+  const [bar, setBar] = useState("");
+
+  function handleBarcode(e) {
+    setBar(e.target.value);
+  }
   return (
     <div className="mx-auto">
       <Head>
@@ -97,7 +105,14 @@ export default function BookingTiket() {
                   </div>
                 </div>
               </div>
-              <div className="w-1/3 text-2xl flex flex-col justify-between text-black bg-white-100 p-10 mt-10 rounded-lg border-solid border-2 border-gray-200"></div>
+              <div className="w-1/4 text-2xl justify-center text-black bg-white-100 mt-10 rounded-lg border-solid border-2 border-gray-200">
+                <div className="-rotate-90 mt-48 w-40 justify-center ms-10">
+                  <Barcode
+                    value={bar ? bar : "1233 1233 1233"}
+                    lineColor="black"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

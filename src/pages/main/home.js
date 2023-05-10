@@ -2,6 +2,8 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
+import axios from "axios";
 import logoAnkasa from "../../images/logo-ankasa-section.svg";
 import LogoMaskapai from "../../images/garuda-indonesia-logo.svg";
 import LogoWhite from "../../images/logo-white.svg";
@@ -11,7 +13,7 @@ import LogoKoper from "../../images/logo-koper.svg";
 import LogoFood from "../../images/logo-food.svg";
 import LogoWifi from "../../images/logo-wifi.svg";
 import LogoFrom from "../../images/logo-from.svg";
-import * as React from "react";
+import { useState, useEffect } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -19,16 +21,68 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
+
+const url = process.env.NEXT_PUBLIC_BASE_API;
+/* animasi */
+const callback = function (entries) {
+  entries.forEach((entry) => {
+    console.log(entry);
+
+    if (entry.isIntersecting) {
+      entry.target.classList.add("animate-fadeIn");
+    } else {
+      entry.target.classList.remove("animate-fadeIn");
+    }
+  });
+};
+if (typeof window !== "undefined") {
+  const observer = new IntersectionObserver(callback);
+  const targets = document.querySelectorAll(".js-show-on-scroll");
+  targets.forEach(function (target) {
+    target.classList.add("opacity-0");
+    observer.observe(target);
+  });
+}
+
 function valuetext(value) {
   return `${value}`;
 }
-export default function Home() {
-  const [value, setValue] = React.useState([0,300]);
 
+/* export async function getStaticProps() {
+  const resp = await fetch(url + `/tickets/show-all/`);
+
+  return {
+    props: {
+      data: await resp.json(),
+    },
+  };
+} */
+export default function Home() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [value, setValue] = useState([0, 300]);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  /* get data */
 
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    await axios
+      .get(url + `/tickets/show-all/`)
+      .then((res) => {
+        console.log(res);
+        setLoading(false);
+        setData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(true);
+      });
+  };
   return (
     <div className="mx-auto  h-screen bg-white">
       <div className="flex flex-col h-screen">
@@ -87,12 +141,12 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-8 p-4 mr-10 ms-10">
             {/* left menu */}
-            <div className="col-span-1 p-2">
+            <div className="col-span-1 p-2 js-show-on-scroll">
               <div className="text-xl flex flex-row justify-between">
                 <h1 className="font-bold">Filter</h1>
                 <h1 className="text-sky-500 font-bold">Reset</h1>
               </div>
-              <div className="flex flex-col bg-white border-stone-500 rounded-lg mt-5 p-5">
+              <div className="flex flex-col bg-white border-stone-500 rounded-lg mt-5 p-5 shadow-md">
                 {/*  */}
                 <div>
                   <Accordion>
@@ -113,7 +167,7 @@ export default function Home() {
                           <input
                             id="checkbox-1"
                             type="checkbox"
-                            defaultValue="Direct"
+                            /* value="Direct" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -125,7 +179,7 @@ export default function Home() {
                           <input
                             id="checkbox-2"
                             type="checkbox"
-                            defaultValue="Transit"
+                            /* value="Transit" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -137,7 +191,7 @@ export default function Home() {
                           <input
                             id="checkbox-2"
                             type="checkbox"
-                            defaultValue="Transit 2+"
+                            /* value="Transit 2+" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -162,7 +216,7 @@ export default function Home() {
                           <input
                             id="checkbox-1"
                             type="checkbox"
-                            defaultValue="Luggage"
+                            /* value="Luggage" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -174,7 +228,7 @@ export default function Home() {
                           <input
                             id="checkbox-2"
                             type="checkbox"
-                            defaultValue="In-Flight Meal"
+                            /* value="In-Flight Meal" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -186,7 +240,7 @@ export default function Home() {
                           <input
                             id="checkbox-2"
                             type="checkbox"
-                            defaultValue="Wi-fi"
+                            /* value="Wi-fi" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -213,7 +267,7 @@ export default function Home() {
                           <input
                             id="checkbox-2"
                             type="checkbox"
-                            defaultValue="00:00 - 06:00"
+                            /* value="00:00 - 06:00" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -225,7 +279,7 @@ export default function Home() {
                           <input
                             id="checkbox-2"
                             type="checkbox"
-                            defaultValue="06:00 - 12:00"
+                            /* value="06:00 - 12:00" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -236,7 +290,7 @@ export default function Home() {
                           <input
                             id="checkbox-2"
                             type="checkbox"
-                            defaultValue="12:00 - 18:00"
+                            /* value="12:00 - 18:00" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -247,7 +301,7 @@ export default function Home() {
                           <input
                             id="checkbox-2"
                             type="checkbox"
-                            defaultValue="18:00 - 24:00"
+                            /* value="18:00 - 24:00" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -274,7 +328,7 @@ export default function Home() {
                           <input
                             id="checkbox-1"
                             type="checkbox"
-                            defaultValue="00:00 - 06:00"
+                            /* value="00:00 - 06:00" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -286,7 +340,7 @@ export default function Home() {
                           <input
                             id="checkbox-2"
                             type="checkbox"
-                            defaultValue="06:00 - 12:00"
+                            /* value="06:00 - 12:00" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -298,7 +352,7 @@ export default function Home() {
                           <input
                             id="checkbox-2"
                             type="checkbox"
-                            defaultValue="12:00 - 18:00"
+                            /* value="12:00 - 18:00" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -309,7 +363,7 @@ export default function Home() {
                           <input
                             id="checkbox-2"
                             type="checkbox"
-                            defaultValue="18:00 - 24:00"
+                            /* value="18:00 - 24:00" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -334,7 +388,7 @@ export default function Home() {
                           <input
                             id="checkbox-1"
                             type="checkbox"
-                            defaultValue="Garuda Indonesia"
+                            /*  value="Garuda Indonesia" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -346,7 +400,7 @@ export default function Home() {
                           <input
                             id="checkbox-2"
                             type="checkbox"
-                            defaultValue="Air Asia"
+                            /*  value="Air Asia" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -358,7 +412,7 @@ export default function Home() {
                           <input
                             id="checkbox-2"
                             type="checkbox"
-                            defaultValue="Lion Air"
+                            /* value="Lion Air" */
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                         </div>
@@ -403,7 +457,7 @@ export default function Home() {
               </div>
             </div>
             {/* right menu */}
-            <div className="col-span-3 p-2">
+            <div className="col-span-3 p-2 js-show-on-scroll">
               <div className="text-xl flex flex-row justify-between">
                 <div className="flex flex-row">
                   <h1 className="font-bold">Select Tiket</h1>
@@ -418,218 +472,148 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              {/* list  */}
-              <div className="flex flex-col bg-white rounded-lg mt-5">
-                <div className="p-5">
-                  {/* layout merek */}
-                  <div className="flex flex-col">
-                    <div className="flex flex-row">
-                      <div className="w-20">
-                        <Image
-                          className="w-auto"
-                          src={LogoMaskapai}
-                          alt="garuda-indonesia-logo"
-                          style={{ width: "100", height: "57" }}
-                        />
-                      </div>
-                      <div className="w-auto ms-10 mt-2">
-                        <h1 className="">Garuda Indonesia</h1>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-5 xl:grid-cols-5 gap-4 justify-items-start w-full mt-2">
-                      <div className="flex flex-row mt-5 mx-auto md:justify-center">
-                        <div className="flex-auto mx-auto w-20">
-                          <h1 className="font-bold">IDN</h1>
-                          <h1 className="text-sm">12:33</h1>
-                        </div>
-                        <div className="flex-none mx-auto w-20">
-                          <Image
-                            className="w-auto"
-                            src={LogoFlight}
-                            alt="logo-flight"
-                          />
-                        </div>
-                        <div className="flex-auto mx-auto w-20">
-                          <h1 className="font-bold">JPN</h1>
-                          <h1 className="text-sm">12:33</h1>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-col mx-auto mt-5">
-                        <div className="flex-auto mx-auto justify-center">
-                          <h1 className="font-sm">3 hours 11 minutes</h1>
-                        </div>
-                        <div className="flex-auto mx-auto justify-center ">
-                          <h1 className="font-bold text-sm text-gray-500">
-                            (1 transit)
-                          </h1>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-row mx-auto mt-5">
-                        <div className="flex-auto mx-auto justify-center">
-                          <Image
-                            className="w-auto"
-                            src={LogoKoper}
-                            alt="logo-koper"
-                          />
-                        </div>
-                        <div className="flex-auto mx-auto justify-center ms-3">
-                          <Image
-                            className="w-auto"
-                            src={LogoFood}
-                            alt="logo-food"
-                          />
-                        </div>
-                        <div className="flex-auto mx-auto justify-center ms-3">
-                          <Image
-                            className="w-auto"
-                            src={LogoWifi}
-                            alt="logo-wifi"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="flex flex-row mx-auto mt-5">
-                        <div className="flex-auto mx-auto justify-center me-2">
-                          <h1 className="font-bold text-blue-400">$ 214.00</h1>
-                        </div>
-                        <div className="flex-auto mx-auto justify-center ">
-                          <h1 className="font-bold text-gray-500">/pcs</h1>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-col mx-auto w-full mt-5">
-                        <button
-                          className="rounded-lg p-2 text-xl drop-shadow-xl"
-                          style={{ backgroundColor: "#2395FF", color: "white" }}
-                        >
-                          Select
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col">
-                      <select
-                        id="countries"
-                        className="bg-white-50 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-40 bg-white p-2.5 text-blue-400 font-bold"
-                      >
-                        <option selected defaultValue="">
-                          View Details
-                        </option>
-                        <option defaultValue=""> View Details 2</option>
-                      </select>
-                    </div>
+              {loading ? (
+                <div className="min-h-screen flex justify-center items-center">
+                  <div className="loader bg-white rounded-full flex space-x-3">
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
                   </div>
                 </div>
-              </div>
-              {/* list  */}
-              <div className="flex flex-col bg-white rounded-lg mt-5">
-                <div className="p-5">
-                  {/* layout merek */}
-                  <div className="flex flex-col">
-                    <div className="flex flex-row">
-                      <div className="w-20">
-                        <Image
-                          className="w-auto"
-                          src={LogoMaskapai}
-                          alt="garuda-indonesia-logo"
-                          style={{ width: "100", height: "57" }}
-                        />
-                      </div>
-                      <div className="w-auto ms-10 mt-2">
-                        <h1 className="">Garuda Indonesia</h1>
+              ) : (
+                <>
+                  {data.map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex flex-col bg-white rounded-lg mt-5 shadow-md js-show-on-scroll"
+                    >
+                      <div className="p-5">
+                        {/* layout merek */}
+                        <div className="flex flex-col">
+                          <div className="flex flex-row">
+                            <div className="w-20">
+                              <img
+                                className="w-auto"
+                                src={item.airlines_logo}
+                                alt=""
+                                style={{ width: "100", height: "57" }}
+                              />
+                            </div>
+                            <div className="w-auto ms-10 mt-2">
+                              <h1 className="">{item.airlines_name}</h1>
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-5 xl:grid-cols-5 gap-4 justify-items-start w-full mt-2">
+                            <div className="flex flex-row mt-5 mx-auto md:justify-center">
+                              <div className="flex-auto mx-auto w-20">
+                                <h1 className="font-bold">
+                                  {item.origin_code}
+                                </h1>
+                                <h1 className="text-sm">{item.takeoff}</h1>
+                              </div>
+                              <div className="flex-none mx-auto w-20">
+                                <Image
+                                  className="w-auto"
+                                  src={LogoFlight}
+                                  alt="logo-flight"
+                                />
+                              </div>
+                              <div className="flex-auto mx-auto w-20">
+                                <h1 className="font-bold">
+                                  {item.destination_code}
+                                </h1>
+                                <h1 className="text-sm">{item.landing}</h1>
+                              </div>
+                            </div>
+
+                            <div className="flex flex-col mx-auto mt-5">
+                              <div className="flex-auto mx-auto justify-center">
+                                <h1 className="font-sm">{item.duration}</h1>
+                              </div>
+                              <div className="flex-auto mx-auto justify-center ">
+                                <h1 className="font-bold text-sm text-gray-500">
+                                  (1 transit)
+                                </h1>
+                              </div>
+                            </div>
+
+                            <div className="flex flex-row mx-auto mt-5">
+                              <div className="flex-auto mx-auto justify-center">
+                                <Image
+                                  className="w-auto"
+                                  src={LogoKoper}
+                                  alt="logo-koper"
+                                />
+                              </div>
+                              <div className="flex-auto mx-auto justify-center ms-3">
+                                <Image
+                                  className="w-auto"
+                                  src={LogoFood}
+                                  alt="logo-food"
+                                />
+                              </div>
+                              <div className="flex-auto mx-auto justify-center ms-3">
+                                <Image
+                                  className="w-auto"
+                                  src={LogoWifi}
+                                  alt="logo-wifi"
+                                />
+                              </div>
+                            </div>
+
+                            <div className="flex flex-row mx-auto mt-5">
+                              <div className="flex-auto mx-auto justify-center me-2">
+                                <h1 className="font-bold text-blue-400">
+                                  ${item.price}
+                                </h1>
+                              </div>
+                              <div className="flex-auto mx-auto justify-center ">
+                                <h1 className="font-bold text-gray-500">
+                                  /pcs
+                                </h1>
+                              </div>
+                            </div>
+
+                            <div className="flex flex-col mx-auto w-full mt-5">
+                              <Link
+                                href={`/booking/${item.id}`}
+                                className="flex flex-col mx-auto w-full"
+                              >
+                                <button
+                                  className="rounded-lg p-2 text-xl drop-shadow-xl"
+                                  style={{
+                                    backgroundColor: "#2395FF",
+                                    color: "white",
+                                  }}
+                                >
+                                  Select
+                                </button>
+                              </Link>
+                            </div>
+                          </div>
+
+                          <div className="flex flex-col">
+                            <select
+                              id="countries"
+                              className="bg-white-50 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-40 bg-white p-2.5 text-blue-400 font-bold"
+                            >
+                              <option /*  value="" */>View Details</option>
+                              <option /*  value="" */> View Details 2</option>
+                            </select>
+                          </div>
+                        </div>
                       </div>
                     </div>
+                  ))}
+                </>
+              )}
 
-                    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-5 xl:grid-cols-5 gap-4 justify-items-start w-full mt-2">
-                      <div className="flex flex-row mt-5 mx-auto md:justify-center">
-                        <div className="flex-auto mx-auto w-20">
-                          <h1 className="font-bold">IDN</h1>
-                          <h1 className="text-sm">12:33</h1>
-                        </div>
-                        <div className="flex-none mx-auto w-20">
-                          <Image
-                            className="w-auto"
-                            src={LogoFlight}
-                            alt="logo-flight"
-                          />
-                        </div>
-                        <div className="flex-auto mx-auto w-20">
-                          <h1 className="font-bold">JPN</h1>
-                          <h1 className="text-sm">12:33</h1>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-col mx-auto mt-5">
-                        <div className="flex-auto mx-auto justify-center">
-                          <h1 className="font-sm">3 hours 11 minutes</h1>
-                        </div>
-                        <div className="flex-auto mx-auto justify-center ">
-                          <h1 className="font-bold text-sm text-gray-500">
-                            (1 transit)
-                          </h1>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-row mx-auto mt-5">
-                        <div className="flex-auto mx-auto justify-center">
-                          <Image
-                            className="w-auto"
-                            src={LogoKoper}
-                            alt="logo-koper"
-                          />
-                        </div>
-                        <div className="flex-auto mx-auto justify-center ms-3">
-                          <Image
-                            className="w-auto"
-                            src={LogoFood}
-                            alt="logo-food"
-                          />
-                        </div>
-                        <div className="flex-auto mx-auto justify-center ms-3">
-                          <Image
-                            className="w-auto"
-                            src={LogoWifi}
-                            alt="logo-wifi"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="flex flex-row mx-auto mt-5">
-                        <div className="flex-auto mx-auto justify-center me-2">
-                          <h1 className="font-bold text-blue-400">$ 214.00</h1>
-                        </div>
-                        <div className="flex-auto mx-auto justify-center ">
-                          <h1 className="font-bold text-gray-500">/pcs</h1>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-col mx-auto w-full mt-5">
-                        <button
-                          className="rounded-lg p-2 text-xl drop-shadow-xl"
-                          style={{ backgroundColor: "#2395FF", color: "white" }}
-                        >
-                          Select
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col">
-                      <select
-                        id="countries"
-                        className="bg-white-50 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-40 bg-white p-2.5 text-blue-400 font-bold"
-                      >
-                        <option selected defaultValue="">
-                          View Details
-                        </option>
-                        <option defaultValue=""> View Details 2</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* list */}
             </div>
           </div>
           {/* footer */}
