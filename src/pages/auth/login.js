@@ -12,7 +12,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { SyncOutlined } from "@mui/icons-material";
 
 export default function Login() {
-  const url = process.env.NEXT_PUBLIC_BASE_API;
   const router = useRouter();
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [email, setEmail] = useState("");
@@ -26,7 +25,7 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     await axios
-      .post(url + "/auth/login", formData, {
+      .post(process.env.NEXT_PUBLIC_BASE_API + "/auth/login", formData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -35,7 +34,7 @@ export default function Login() {
         toast.success("Login Success", { position: toast.POSITION.TOP_RIGHT });
         setLoading(false);
         setCookie("token", res.data.data.token, {
-          path:"/",
+          path: "/",
         });
         router.push("/main/home");
       })
