@@ -3,6 +3,7 @@ import Footer from "@/components/footer";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
@@ -13,16 +14,66 @@ import BtnBack from "../../images/btn-right.svg";
 import LogoStar from "../../images/logo-start.svg";
 import LogoSetting from "../../images/logo-setting.svg";
 import LogoLogout from "../../images/logo-logout.svg";
+
 export default function MyBooking() {
   const url = process.env.NEXT_PUBLIC_BASE_API;
   const router = useRouter();
+  const [data, setData] = useState([]);
+  const [dataUser, setDataUser] = useState([]);
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [loading, setLoading] = useState(false);
   const token = cookies.token;
 
+  /* get data users */
+  useEffect(() => {
+    getDataUsers();
+  }, []);
+
+  const getDataUsers = async () => {
+    await axios
+      .get(url + `/users/show-users/`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setLoading(false);
+        setDataUser(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(true);
+      });
+  };
+
+  /* get data */
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    await axios
+      .get(url + `/bookings/my-booking`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setLoading(false);
+        setData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(true);
+      });
+  };
+
   /* logout */
   const handleRemove = () => {
-    // removeCookie("token", { path: "/" });
     removeCookie("token", { path: "/" });
     router.push("/");
   };
@@ -44,80 +95,92 @@ export default function MyBooking() {
               <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-8 p-4 mr-10 ms-10">
                 {/* left menu */}
                 <div className="col-span-1 p-2">
-                  <div className="flex flex-col bg-white shadow-md mt-5 p-10 rounded-lg">
-                    <div className="flex justify-center mx-auto w-40 justify-center rounded-full border-4 border-cyan-400">
-                      <img
-                        className="w-auto rounded-full border-cyan-400"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
-                    </div>
-                    <div className="flex justify-center mx-auto mt-5">
-                      <button class="bg-transparent hover:bg-cyan-400 text-cyan-400 font-semibold hover:text-white py-2 px-4 border border-cyan-400 hover:border-transparent rounded">
-                        Select Photo
-                      </button>
-                    </div>
-                    <div className="flex justify-center mx-auto font-bold text-lg mt-5">
-                      <h1>Mike Kowalski</h1>
-                    </div>
-                    <div className="flex flex-row justify-center mx-auto text-lg mt-3">
-                      <Image src={LogoLocation} alt="logo-location" />
-                      <h1 className="ms-2">Medan, Indonesia</h1>
-                    </div>
-                    <div className="flex flex-row justify-between mt-5 font-bold">
-                      <h1>Cards</h1>
-                      <h1 className="text-cyan-400">+ Add</h1>
-                    </div>
-                    <div className="flex flex-col text-lg bg-blue-500 p-5 mt-5 rounded-lg">
-                      <div className="ms-2 me-2">
-                        <h1 className="text-white">4441 1235 5512 5551</h1>
-                      </div>
-                      <div className="flex flex-row justify-between ms-2 me-2">
-                        <h1 className="text-cyan-300">X Card</h1>
-                        <h1 className="text-cyan-300">$ 1,440.2</h1>
-                      </div>
-                    </div>
-                    <div className="flex flex-col p-5 font-bold">
-                      <div className="flex flex-row justify-between">
-                        <Link href={"/profile/my-profile"}>
-                          <div className="flex flex-row">
-                            <Image src={LogoUsers} alt="logo-user" />
-                            <h1 className="text-cyan-400 ms-10">Profile</h1>
+                  {dataUser?.map((item, index) => (
+                    <>
+                      <div
+                        key={index}
+                        className="flex flex-col bg-white shadow-md mt-5 p-10 rounded-lg"
+                      >
+                        <div className="flex justify-center mx-auto w-40 justify-center rounded-full border-4 border-cyan-400">
+                          <img
+                            className="w-auto rounded-full border-cyan-400"
+                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt=""
+                          />
+                        </div>
+                        <div className="flex justify-center mx-auto mt-5">
+                          <button class="bg-transparent hover:bg-cyan-400 text-cyan-400 font-semibold hover:text-white py-2 px-4 border border-cyan-400 hover:border-transparent rounded">
+                            Select Photo
+                          </button>
+                        </div>
+                        <div className="flex justify-center mx-auto font-bold text-lg mt-5">
+                          <h1>{item.fullname}</h1>
+                        </div>
+                        <div className="flex flex-row justify-center mx-auto text-lg mt-3">
+                          <Image src={LogoLocation} alt="logo-location" />
+                          <h1 className="ms-2">
+                            {item.city}, {item.address}
+                          </h1>
+                        </div>
+                        <div className="flex flex-row justify-between mt-5 font-bold">
+                          <h1>Cards</h1>
+                          <h1 className="text-cyan-400">+ Add</h1>
+                        </div>
+                        <div className="flex flex-col text-lg bg-blue-500 p-5 mt-5 rounded-lg">
+                          <div className="ms-2 me-2">
+                            <h1 className="text-white">4441 1235 5512 5551</h1>
                           </div>
-                        </Link>
-                        <div className="">
-                          <Image src={BtnBack} alt="btnback" />
-                        </div>
-                      </div>
-                      <div className="flex flex-row justify-between mt-5">
-                        <div className="flex flex-row">
-                          <Image src={LogoStar} alt="logo-start" />
-                          <h1 className="text-black-400 ms-10">My Review</h1>
-                        </div>
-                        <div className="">
-                          <Image src={BtnBack} alt="btnback" />
-                        </div>
-                      </div>
-                      <div className="flex flex-row justify-between mt-5">
-                        <div className="flex flex-row">
-                          <Image src={LogoSetting} alt="logo-start" />
-                          <h1 className="text-black-400 ms-10">Setting</h1>
-                        </div>
-                        <div className="">
-                          <Image src={BtnBack} alt="btnback" />
-                        </div>
-                      </div>
-                      <div className="flex flex-row justify-between mt-5">
-                        <Link href={""} onClick={handleRemove}>
-                          <div className="flex flex-row">
-                            <Image src={LogoLogout} alt="logo-start" />
-                            <h1 className="text-red-400 ms-10">Logout</h1>
+                          <div className="flex flex-row justify-between ms-2 me-2">
+                            <h1 className="text-cyan-300">X Card</h1>
+                            <h1 className="text-cyan-300">$ 1,440.2</h1>
                           </div>
-                        </Link>
+                        </div>
+                        <div className="flex flex-col p-5 font-bold">
+                          <div className="flex flex-row justify-between">
+                            <Link href={"/profile/my-profile"}>
+                              <div className="flex flex-row">
+                                <Image src={LogoUsers} alt="logo-user" />
+                                <h1 className="text-cyan-400 ms-10">Profile</h1>
+                              </div>
+                            </Link>
+                            <div className="">
+                              <Image src={BtnBack} alt="btnback" />
+                            </div>
+                          </div>
+                          <div className="flex flex-row justify-between mt-5">
+                            <div className="flex flex-row">
+                              <Image src={LogoStar} alt="logo-start" />
+                              <h1 className="text-black-400 ms-10">
+                                My Review
+                              </h1>
+                            </div>
+                            <div className="">
+                              <Image src={BtnBack} alt="btnback" />
+                            </div>
+                          </div>
+                          <div className="flex flex-row justify-between mt-5">
+                            <div className="flex flex-row">
+                              <Image src={LogoSetting} alt="logo-start" />
+                              <h1 className="text-black-400 ms-10">Setting</h1>
+                            </div>
+                            <div className="">
+                              <Image src={BtnBack} alt="btnback" />
+                            </div>
+                          </div>
+                          <div className="flex flex-row justify-between mt-5">
+                            <Link href={""} onClick={handleRemove}>
+                              <div className="flex flex-row">
+                                <Image src={LogoLogout} alt="logo-start" />
+                                <h1 className="text-red-400 ms-10">Logout</h1>
+                              </div>
+                            </Link>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
+                    </>
+                  ))}
                 </div>
+
                 {/* right menu */}
                 <div className="col-span-3 p-2">
                   {/* list  */}
@@ -246,9 +309,31 @@ export default function MyBooking() {
                   <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
                   <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
                   <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                </div>
+                <div className="loader bg-white rounded-full flex space-x-3">
                   <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
                   <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
                   <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                </div>
+                <div className="ms-5 me-5 text-blue-500">
+                  <Link href={"/auth/login"}>Login Users Now</Link>
+                </div>
+                <div className="loader bg-white rounded-full flex space-x-3">
+                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                </div>
+                <div className="loader bg-white rounded-full flex space-x-3">
+                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
                 </div>
               </div>
             </>

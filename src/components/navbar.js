@@ -196,7 +196,7 @@ export default function Navbar() {
                         </Button>
                         <Menu className="mt-3" {...bindMenu(popupState)}>
                           <MenuItem onClick={popupState.close}>
-                            <Link href={"/main/my-profile"}>Profile</Link>
+                            <Link href={"/profile/my-profile"}>Profile</Link>
                           </MenuItem>
                           <div onClick={handleRemove}>
                             <MenuItem onClick={popupState.close}>
@@ -269,7 +269,7 @@ export default function Navbar() {
                           </Button>
                           <Menu className="mt-3" {...bindMenu(popupState)}>
                             <MenuItem onClick={popupState.close}>
-                              <Link href={"/main/my-profile"}>Profile</Link>
+                              <Link href={"/profile/my-profile"}>Profile</Link>
                             </MenuItem>
                             <div onClick={handleRemove}>
                               <MenuItem onClick={popupState.close}>
