@@ -287,54 +287,6 @@ export default function MyBooking() {
                       </div>
                     </>
                   ))}
-                  {/* list  */}
-                  {/* <div className="flex flex-col bg-white rounded-lg shadow-md mt-5">
-                    <div className="p-5 flex flex-col border-b-4 border-neutral-200">
-                      <div className="flex flex-col">
-                        <h1>Monday, 20 July 20-12:33</h1>
-                      </div>
-                      <div className="flex flex-row mt-5">
-                        <div className="w-10">
-                          <h1 className="font-bold">IDN</h1>
-                        </div>
-                        <div className="w-10 ms-3">
-                          <Image
-                            className="w-auto"
-                            src={LogoFlight}
-                            alt="logo-flight"
-                          />
-                        </div>
-                        <div className="w-10 ms-3">
-                          <h1 className="font-bold">JPN</h1>
-                        </div>
-                      </div>
-                      <div className="flex flex-col mt-3">
-                        <h1 className="text-neutral-500">
-                          Garuda Indonesia, AB - 221
-                        </h1>
-                      </div>
-                    </div>
-                    <div className="p-5 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-                      <div className="flex flex-row">
-                        <div className="text-lg text-neutral-500 w-32">
-                          <h1>Status</h1>
-                        </div>
-                        <div className="mx-auto w-64">
-                          <Link href={"/ticket/ticket"}>
-                            <button className="rounded-lg p-2 text-xl drop-shadow-xl bg-green-400 text-white">
-                              Eticket issued
-                            </button>
-                          </Link>
-                        </div>
-                      </div>
-                      <div className="" />
-                      <div className="mx-auto w-full mt-2">
-                        <h1 className="text-lg text-blue-400 font-bold text-right">
-                          View Details
-                        </h1>
-                      </div>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </>
