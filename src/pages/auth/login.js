@@ -36,6 +36,12 @@ export default function Login() {
         setCookie("token", res.data.data.token, {
           path: "/",
         });
+        setCookie("email", res.data.data.email, {
+          path: "/",
+        });
+        setCookie("id", res.data.data.id, {
+          path: "/",
+        });
         router.push("/main/home");
       })
       .catch((err) => {

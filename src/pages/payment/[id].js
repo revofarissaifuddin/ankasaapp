@@ -7,8 +7,45 @@ import LogoPaypal from "../../images/logo-paypal.svg";
 import LogoMastercard from "../../images/logo-mastercard-logo.svg";
 import LogoStripe from "../../images/logo-stripe.svg";
 import LogoVisa from "../../images/logo-visa.svg";
+import { SyncOutlined } from "@mui/icons-material"
+import { useCookies } from "react-cookie";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import axios from "axios";
 
 export default function BookingPayment() {
+  const url = process.env.NEXT_PUBLIC_BASE_API;
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const router = useRouter();
+  const { id } = router.query;
+  const token = cookies.token;
+  const [loading, setLoading] = useState(false);
+  const formData = {
+    id: parseInt(id),
+    is_paid: 1,
+  };
+  const handlePayment = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const result = await axios.put(
+        url+`/bookings/is_paid/${id}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("PAYMENT SUCCESS");
+      router.push("/profile/my-booking");
+      setLoading(false);
+    } catch (error) {
+      console.log("PAYMENT FAILD");
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="mx-auto">
       <Head>
@@ -143,8 +180,15 @@ export default function BookingPayment() {
                       href={"/profile/my-booking"}
                       className="flex flex-col mt-5"
                     >
-                      <button className="rounded-lg shadow-lg w-auto p-2 text-xl drop-shadow-xl bg-blue-500 text-white text-sm">
-                        Try it free for 30 Days
+                      <button
+                        onClick={handlePayment}
+                        className="rounded-lg shadow-lg w-auto p-2 text-xl drop-shadow-xl bg-blue-500 text-white text-sm"
+                      >
+                        {loading ? (
+                          <SyncOutlined spin />
+                        ) : (
+                          " Try it free for 30 Days"
+                        )}
                       </button>
                     </Link>
                   </div>

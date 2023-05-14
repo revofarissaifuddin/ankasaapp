@@ -48,7 +48,7 @@ export default function MyBooking() {
       });
   };
 
-  /* get data */
+  /* get data ticket */
   useEffect(() => {
     getData();
   }, []);
@@ -119,7 +119,7 @@ export default function MyBooking() {
                         <div className="flex flex-row justify-center mx-auto text-lg mt-3">
                           <Image src={LogoLocation} alt="logo-location" />
                           <h1 className="ms-2">
-                            {item.city}, {item.address}
+                            {item.address}, {item.city}
                           </h1>
                         </div>
                         <div className="flex flex-row justify-between mt-5 font-bold">
@@ -204,54 +204,91 @@ export default function MyBooking() {
                       </div>
                     </div>
                   </div>
+                  {data?.map((item, index) => (
+                    <>
+                      <div
+                        key={index}
+                        className="flex flex-col bg-white rounded-lg shadow-md mt-5"
+                      >
+                        <div className="p-5 flex flex-col border-b-4 border-neutral-200">
+                          <div className="flex flex-col">
+                            <h1>Monday, 20 July 20-12:33</h1>
+                          </div>
+                          <div className="flex flex-row mt-5">
+                            <div className="w-10">
+                              <h1 className="font-bold">{item.origin_code}</h1>
+                            </div>
+                            <div className="w-10 ms-3">
+                              <Image
+                                className="w-auto"
+                                src={LogoFlight}
+                                alt="logo-flight"
+                              />
+                            </div>
+                            <div className="w-10 ms-3">
+                              <h1 className="font-bold">
+                                {item.destination_code}
+                              </h1>
+                            </div>
+                          </div>
+                          <div className="flex flex-col mt-3">
+                            <h1 className="text-neutral-500">
+                              {item.airline_name}, {item.gate} - {item.terminal}
+                            </h1>
+                          </div>
+                        </div>
+                        {item.is_paid == 0 ? (
+                          <>
+                            <div className="p-5 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                              <div className="flex flex-row">
+                                <div className="text-lg text-neutral-500 w-32">
+                                  <h1>Status</h1>
+                                </div>
+                                <div className="mx-auto w-64">
+                                  <Link href={`/payment/${item.id}`}>
+                                    <button className="rounded-lg p-2 text-xl drop-shadow-xl bg-orange-400 text-white">
+                                      Waiting for payment
+                                    </button>
+                                  </Link>
+                                </div>
+                              </div>
+                              <div className="" />
+                              <div className="mx-auto w-full mt-2">
+                                <h1 className="text-lg text-blue-400 font-bold text-right">
+                                  View Details
+                                </h1>
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div className="p-5 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                              <div className="flex flex-row">
+                                <div className="text-lg text-neutral-500 w-32">
+                                  <h1>Status</h1>
+                                </div>
+                                <div className="mx-auto w-64">
+                                  <Link href={`/ticket/${item.id}`}>
+                                    <button className="rounded-lg p-2 text-xl drop-shadow-xl bg-green-400 text-white">
+                                      Eticket issued
+                                    </button>
+                                  </Link>
+                                </div>
+                              </div>
+                              <div className="" />
+                              <div className="mx-auto w-full mt-2">
+                                <h1 className="text-lg text-blue-400 font-bold text-right">
+                                  View Details
+                                </h1>
+                              </div>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    </>
+                  ))}
                   {/* list  */}
-                  <div className="flex flex-col bg-white rounded-lg shadow-md mt-5">
-                    <div className="p-5 flex flex-col border-b-4 border-neutral-200">
-                      <div className="flex flex-col">
-                        <h1>Monday, 20 July 20-12:33</h1>
-                      </div>
-                      <div className="flex flex-row mt-5">
-                        <div className="w-10">
-                          <h1 className="font-bold">IDN</h1>
-                        </div>
-                        <div className="w-10 ms-3">
-                          <Image
-                            className="w-auto"
-                            src={LogoFlight}
-                            alt="logo-flight"
-                          />
-                        </div>
-                        <div className="w-10 ms-3">
-                          <h1 className="font-bold">JPN</h1>
-                        </div>
-                      </div>
-                      <div className="flex flex-col mt-3">
-                        <h1 className="text-neutral-500">
-                          Garuda Indonesia, AB - 221
-                        </h1>
-                      </div>
-                    </div>
-                    <div className="p-5 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-                      <div className="flex flex-row">
-                        <div className="text-lg text-neutral-500 w-32">
-                          <h1>Status</h1>
-                        </div>
-                        <div className="mx-auto w-64">
-                          <button className="rounded-lg p-2 text-xl drop-shadow-xl bg-orange-400 text-white">
-                            Waiting for payment
-                          </button>
-                        </div>
-                      </div>
-                      <div className="" />
-                      <div className="mx-auto w-full mt-2">
-                        <h1 className="text-lg text-blue-400 font-bold text-right">
-                          View Details
-                        </h1>
-                      </div>
-                    </div>
-                  </div>
-                  {/* list  */}
-                  <div className="flex flex-col bg-white rounded-lg shadow-md mt-5">
+                  {/* <div className="flex flex-col bg-white rounded-lg shadow-md mt-5">
                     <div className="p-5 flex flex-col border-b-4 border-neutral-200">
                       <div className="flex flex-col">
                         <h1>Monday, 20 July 20-12:33</h1>
@@ -297,43 +334,43 @@ export default function MyBooking() {
                         </h1>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </>
           ) : (
             <>
               <div className="min-h-screen flex justify-center items-center">
-                <div className="loader bg-white rounded-full flex space-x-3">
-                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                </div>
-                <div className="loader bg-white rounded-full flex space-x-3">
-                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                </div>
-                <div className="ms-5 me-5 text-blue-500">
-                  <Link href={"/auth/login"}>Login Users Now</Link>
-                </div>
-                <div className="loader bg-white rounded-full flex space-x-3">
-                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                </div>
-                <div className="loader bg-white rounded-full flex space-x-3">
-                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+                  <div className="loader bg-white rounded-full flex space-x-3">
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  </div>
+                  <div className="text-blue-500 mx-auto justify-center items-center">
+                    <Link href={"/auth/login"}>Login Users Now</Link>
+                  </div>
+                  <div className="loader bg-white rounded-full flex space-x-3">
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  </div>
                 </div>
               </div>
             </>

@@ -474,14 +474,36 @@ export default function Home() {
               </div>
               {loading ? (
                 <div className="min-h-screen flex justify-center items-center">
-                  <div className="loader bg-white rounded-full flex space-x-3">
-                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+                    <div className="loader bg-white rounded-full flex space-x-3">
+                      <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                      <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                      <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                      <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+
+                      <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                      <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                      <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                      <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    </div>
+                    <div className="text-blue-500 mx-auto justify-center items-center">
+                      <Link href={"/auth/login"}>Login Users Now</Link>
+                    </div>
+                    <div className="loader bg-white rounded-full flex space-x-3">
+                      <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                      <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                      <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                      <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+
+                      <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                      <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                      <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                      <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    </div>
                   </div>
                 </div>
               ) : (

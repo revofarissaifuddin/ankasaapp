@@ -4,7 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
 import logoAnkasa from "../../images/logo-ankasa-section.svg";
@@ -21,11 +21,13 @@ export default function BookingSelected() {
   const [data, setData] = useState([]);
   const [dataUser, setDataUser] = useState([]);
   const [title, setTitle] = useState();
+  const [fullname, setFullname] = useState();
+  const [nationality, setNationality] = useState();
   const [insurance, setInsurance] = useState(false);
   const [loading, setLoading] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const token = cookies.token;
-
+  const id_users = cookies.id;
   /* get data users */
   useEffect(() => {
     getDataUsers();
@@ -53,15 +55,15 @@ export default function BookingSelected() {
   /* get data booking*/
   useEffect(() => {
     getData();
-  }, []);
+  }, [id]);
 
   const getData = async () => {
     await axios
-      .get(`https://sapphire-cocoon-belt.cyclic.app/tickets/show/${id}`)
+      .get(url+`/tickets/show/${id}`)
       .then((res) => {
         console.log(res);
-        setLoading(false);
         setData(res.data.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(id);
@@ -71,26 +73,34 @@ export default function BookingSelected() {
   };
 
   const formData = {
+    users_id: `${id_users}`,
     tickets_id: id,
     title: title,
     insurance: insurance,
+    total: data[0].price+2,
+    fullname: fullname,
+    nationality: nationality,
+    is_paid: 0,
   };
   const handleBooking = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
-      const result = await axios.post(url + "/bookings/add", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const userBooking = result.data.data;
-      console.log("BOOKING RESPOSNE", userBooking);
+      const result = await axios.post(
+        url+"/bookings/add",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      /* const userBooking = result.data.data;
+      console.log("BOOKING RESPOSNE", userBooking); */
       router.push("/profile/my-booking");
       setLoading(false);
     } catch (error) {
       console.log("BOOKING FAILD");
-      console.log(error.response.data.message);
       setLoading(false);
     }
   };
@@ -228,11 +238,11 @@ export default function BookingSelected() {
                             defaultValue={0}
                           >
                             <option value="0">--Select Title--</option>
-                            <option selected value={1}>
+                            <option selected value="Mr.">
                               Mr.
                             </option>
-                            <option value={2}>Mrs.</option>
-                            <option value={3}>Ms.</option>
+                            <option value="Mrs.">Mrs.</option>
+                            <option value="Ms.">Ms.</option>
                           </select>
                         </div>
                       </div>
@@ -243,6 +253,9 @@ export default function BookingSelected() {
                           className="w-auto h-10 p-4 border-b-2 border-500 bg-white"
                           placeholder="Full Name"
                           style={{ borderColor: "#D2C2FF" }}
+                          value={fullname}
+                          onChange={(e) => setFullname(e.target.value)}
+                          required
                         />
                       </div>
                       <div
@@ -256,12 +269,15 @@ export default function BookingSelected() {
                           <select
                             id="countries"
                             className="bg-white-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-32 bg-white p-2.5"
+                            onChange={(e) => setNationality(e.target.value)}
+                            defaultValue="0"
                           >
-                            <option selected value="Indonesia">
+                            <option value="0">--Select Title--</option>
+                            <option selected value="IDN">
                               Indonesia
                             </option>
-                            <option value="Malaysia">Malaysia</option>
-                            <option value="Singapore">Singapore</option>
+                            <option value="MLY">Malaysia</option>
+                            <option value="SG">Singapore</option>
                           </select>
                         </div>
                       </div>
@@ -283,6 +299,7 @@ export default function BookingSelected() {
                             <input
                               type="checkbox"
                               className="me-3 bg-white"
+                              value={insurance}
                               checked={insurance}
                               onChange={(e) => {
                                 setInsurance(e.target.checked);
@@ -411,7 +428,7 @@ export default function BookingSelected() {
                           </div>
                           <div className="flex flex-row font-bold">
                             <h1 className="text-md mt-3 text-cyan-400">
-                              ${item.price}
+                              ${item.price + insurance + insurance}
                             </h1>
                             <h1 className="text-md mt-3 ms-2 text-cyan-400">
                               V
@@ -428,36 +445,36 @@ export default function BookingSelected() {
         ) : (
           <>
             <div className="min-h-screen flex justify-center items-center">
-              <div className="loader bg-white rounded-full flex space-x-3">
-                <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-              </div>
-              <div className="loader bg-white rounded-full flex space-x-3">
-                <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-              </div>
-              <div className="ms-5 me-5 text-blue-500">
-                <Link href={"/auth/login"}>Login Users Now</Link>
-              </div>
-              <div className="loader bg-white rounded-full flex space-x-3">
-                <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-              </div>
-              <div className="loader bg-white rounded-full flex space-x-3">
-                <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+              <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+                <div className="loader bg-white rounded-full flex space-x-3">
+                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+
+                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                </div>
+                <div className="text-blue-500 mx-auto justify-center items-center">
+                  <Link href={"/auth/login"}>Login Users Now</Link>
+                </div>
+                <div className="loader bg-white rounded-full flex space-x-3">
+                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+
+                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                </div>
               </div>
             </div>
           </>

@@ -117,7 +117,10 @@ export default function MyProfile() {
               {" "}
               {data.map((item, index) => (
                 <>
-                  <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-8 p-4 mr-10 ms-10">
+                  <div
+                    key={index}
+                    className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-8 p-4 mr-10 ms-10"
+                  >
                     {/* left menu */}
                     <div className="col-span-1 p-2">
                       <div className="flex flex-col bg-white mt-5 p-10 rounded-lg shadow-md">
@@ -134,11 +137,13 @@ export default function MyProfile() {
                           </button>
                         </div>
                         <div className="flex justify-center mx-auto font-bold text-lg mt-5">
-                          <h1>Mike Kowalski</h1>
+                          <h1>{item.fullname}</h1>
                         </div>
                         <div className="flex flex-row justify-center mx-auto text-lg mt-3">
                           <Image src={LogoLocation} alt="logo-location" />
-                          <h1 className="ms-2">Medan, Indonesia</h1>
+                          <h1 className="ms-2">
+                            {item.address}, {item.city}
+                          </h1>
                         </div>
                         <div className="flex flex-row justify-between mt-5 font-bold">
                           <h1>Cards</h1>
@@ -155,7 +160,7 @@ export default function MyProfile() {
                         </div>
                         <div className="flex flex-col p-5 font-bold">
                           <div className="flex flex-row justify-between">
-                            <Link href={"/main/my-profile"}>
+                            <Link href={"/profile/my-profile"}>
                               <div className="flex flex-row">
                                 <Image src={LogoUsers} alt="logo-user" />
                                 <h1 className="text-cyan-400 ms-10">Profile</h1>
@@ -224,7 +229,7 @@ export default function MyProfile() {
                                       className="w-auto h-10 p-5 border-b-2 border-500 bg-white"
                                       placeholder={item.email}
                                       style={{ borderColor: "#D2C2FF" }}
-                                      value={email}
+                                      value={email ? email : item.email}
                                       onChange={(e) => setEmail(e.target.value)}
                                       required
                                     />
@@ -234,7 +239,7 @@ export default function MyProfile() {
                                       className="w-auto h-10 p-5 border-b-2 border-500 bg-white"
                                       placeholder={item.phone}
                                       style={{ borderColor: "#D2C2FF" }}
-                                      value={phone}
+                                      value={phone ? phone : item.phone}
                                       onChange={(e) => setPhone(e.target.value)}
                                       required
                                     />
@@ -249,7 +254,9 @@ export default function MyProfile() {
                                       className="w-auto h-10 p-5 border-b-2 border-500 bg-white"
                                       placeholder={item.fullname}
                                       style={{ borderColor: "#D2C2FF" }}
-                                      value={fullname}
+                                      value={
+                                        fullname ? fullname : item.fullname
+                                      }
                                       onChange={(e) =>
                                         setFullname(e.target.value)
                                       }
@@ -261,7 +268,7 @@ export default function MyProfile() {
                                       className="w-auto h-10 p-5 border-b-2 border-500 bg-white"
                                       placeholder={item.city}
                                       style={{ borderColor: "#D2C2FF" }}
-                                      value={city}
+                                      value={city ? city : item.city}
                                       onChange={(e) => setCity(e.target.value)}
                                       required
                                     />
@@ -271,7 +278,7 @@ export default function MyProfile() {
                                       className="w-auto h-10 p-5 border-b-2 border-500 bg-white"
                                       placeholder={item.address}
                                       style={{ borderColor: "#D2C2FF" }}
-                                      value={address}
+                                      value={address ? address : item.address}
                                       onChange={(e) =>
                                         setAddress(e.target.value)
                                       }
@@ -283,7 +290,9 @@ export default function MyProfile() {
                                       className="w-auto h-10 p-5 border-b-2 border-500 bg-white"
                                       placeholder={item.postcode}
                                       style={{ borderColor: "#D2C2FF" }}
-                                      value={postcode}
+                                      value={
+                                        postcode ? postcode : item.postcode
+                                      }
                                       onChange={(e) =>
                                         setPostcode(e.target.value)
                                       }
@@ -319,36 +328,36 @@ export default function MyProfile() {
           ) : (
             <>
               <div className="min-h-screen flex justify-center items-center">
-                <div className="loader bg-white rounded-full flex space-x-3">
-                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                </div>
-                <div className="loader bg-white rounded-full flex space-x-3">
-                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                </div>
-                <div className="ms-5 me-5 text-blue-500">
-                  <Link href={"/auth/login"}>Login Users Now</Link>
-                </div>
-                <div className="loader bg-white rounded-full flex space-x-3">
-                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                </div>
-                <div className="loader bg-white rounded-full flex space-x-3">
-                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-                  <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+                  <div className="loader bg-white rounded-full flex space-x-3">
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  </div>
+                  <div className="text-blue-500 mx-auto justify-center items-center">
+                    <Link href={"/auth/login"}>Login Users Now</Link>
+                  </div>
+                  <div className="loader bg-white rounded-full flex space-x-3">
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                    <div className="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+                  </div>
                 </div>
               </div>
             </>

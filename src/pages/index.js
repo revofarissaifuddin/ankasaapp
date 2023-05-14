@@ -237,12 +237,16 @@ export default function Home() {
                           </div>
                           <div className="mt-5">
                             <button className="flex flex-row justify-between text-white font-bold bg-blue-500 w-full rounded-lg p-3">
-                              <p className="ms-5">SEARCH FLIGHT</p>
-                              <Image
-                                className="w-auto p-2 me-5"
-                                src={LogoBtnRight}
-                                alt="logo-from"
-                              />
+                              <Link href={"/main/home"}>
+                                <div className="flex flex-row justify-between">
+                                  <p className="ms-5 me-32">SEARCH FLIGHT</p>
+                                  <Image
+                                    className="w-auto p-2 me-5"
+                                    src={LogoBtnRight}
+                                    alt="logo-from"
+                                  />
+                                </div>
+                              </Link>
                             </button>
                           </div>
                         </div>
